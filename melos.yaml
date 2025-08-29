@@ -1,0 +1,9 @@
+name: money_tracker
+
+packages:
+  - packages/*
+  - .
+
+command:
+  bootstrap:
+    runPubGetInParallel: true
