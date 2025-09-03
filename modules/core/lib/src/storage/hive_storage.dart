@@ -1,7 +1,7 @@
 import 'package:core/src/storage/hive_encryption.dart';
 import 'package:hive_ce_flutter/hive_flutter.dart';
 
-/// Class for managing key-value pairs using Hive with encryption support.
+/// Manages key-value pairs using Hive with encryption support.
 class HiveStorage<T> {
   HiveStorage(this._hive, this._encryption);
 

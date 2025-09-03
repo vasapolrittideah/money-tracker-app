@@ -1,6 +1,6 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-/// Class for securely storing key-value pairs using [FlutterSecureStorage].
+/// Securely stores key-value pairs using [FlutterSecureStorage].
 class SecureStorage {
   SecureStorage(this._secureStorage);
 
