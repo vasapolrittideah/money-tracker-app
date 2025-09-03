@@ -1,0 +1,4 @@
+{
+  "appName": "Money Tracker",
+  "apiBaseUrl": "https://localhost:3000/api/v1"
+}
