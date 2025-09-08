@@ -28,6 +28,7 @@ dev_dependencies:
   flutter_lints: ^5.0.0
   build_runner: ^2.7.1
   freezed: ^3.2.0
+  flutter_gen_runner: ^5.11.0
   json_serializable: ^6.11.1
 
 # For information on the generic Dart part of this file, see the
@@ -35,6 +36,13 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  fonts:
+    - family: LineSeedSansTH
+      fonts:
+        - asset: ./assets/fonts/LINESeedSansTH_A_Rg.ttf
+          weight: 400
+        - asset: ./assets/fonts/LINESeedSansTH_A_Bd.ttf
+          weight: 500
 
   # To add assets to your package, add an assets section, like this:
   # assets:
@@ -66,3 +74,12 @@ flutter:
   #
   # For details regarding fonts in packages, see
   # https://flutter.dev/to/font-from-package
+
+flutter_gen:
+  output: lib/gen
+  line_length: 120
+  assets:
+    enabled: true
+    outputs:
+      style: dot-delimiter
+      class_name: Assets
