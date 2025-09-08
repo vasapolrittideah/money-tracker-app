@@ -1,4 +1,4 @@
-import 'package:core/src/config/app_config.dart';
+import 'package:core/src/config/config.dart';
 import 'package:core/src/injection/service_locator.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';

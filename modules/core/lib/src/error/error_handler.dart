@@ -2,13 +2,13 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:core/gen/l10n.dart';
-import 'package:core/src/error/app_failure.dart';
+import 'package:core/src/error/failure.dart';
 import 'package:core/src/error/exceptions.dart';
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:hive_ce_flutter/hive_flutter.dart';
 
-/// Class for handling errors and mapping them to [AppFailure].
+/// Handles various exceptions and maps them to [AppFailure].
 class ErrorHandler {
   /// Handles errors from the given [operation] and maps them to [AppFailure].
   ///
