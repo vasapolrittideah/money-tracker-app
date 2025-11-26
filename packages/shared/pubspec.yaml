@@ -18,6 +18,9 @@ dependencies:
   package_info_plus: ^9.0.0
   path: ^1.9.1
   path_provider: ^2.1.5
+  ua_client_hints: ^1.4.1
+  dio: ^5.9.0
+  pretty_dio_logger: ^1.4.0
 
 dev_dependencies:
   flutter_test:
