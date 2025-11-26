@@ -4,6 +4,9 @@ version: 0.0.1
 publish_to: none
 resolution: workspace
 
+executables:
+  create_feature:
+
 environment:
   sdk: ^3.10.1
   flutter: ">=1.17.0"
