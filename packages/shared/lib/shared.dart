@@ -1,4 +1,4 @@
-export 'src/shared_package.dart';
+export 'src/shared_module.dart';
 export 'src/config/config.dart';
 export 'src/constants/auth_status.dart';
 export 'src/injection/service_locator.dart';
