@@ -4,6 +4,7 @@ export 'src/config/config.dart';
 export 'src/constants/auth_status.dart';
 export 'src/injection/service_locator.dart';
 export 'src/models/session/session_model.dart';
+export 'src/module/base_module.dart';
 export 'src/storage/hive_storage.dart';
 export 'src/storage/hive_encryption.dart';
 export 'src/storage/hive_manager.dart';

@@ -10,3 +10,4 @@ export 'package:hive_ce_flutter/hive_flutter.dart';
 export 'package:json_annotation/json_annotation.dart';
 export 'package:path/path.dart';
 export 'package:path_provider/path_provider.dart';
+export 'package:flutter_screenutil/flutter_screenutil.dart';
