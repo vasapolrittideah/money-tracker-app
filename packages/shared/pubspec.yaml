@@ -25,6 +25,7 @@ dependencies:
   dio: ^5.9.0
   pretty_dio_logger: ^1.4.0
   synchronized: ^3.4.0
+  easy_localization: ^3.0.8
 
 dev_dependencies:
   flutter_test:
