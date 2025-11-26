@@ -9,5 +9,5 @@ export 'src/storage/hive_storage.dart';
 export 'src/storage/hive_encryption.dart';
 export 'src/storage/hive_manager.dart';
 export 'src/storage/secure_storage.dart';
-export 'src/services/session_manager.dart';
+export 'src/managers/session_manager.dart';
 export 'src/utilities/directory_util.dart';
