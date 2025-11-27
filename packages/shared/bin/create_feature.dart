@@ -114,8 +114,8 @@ class ${featureName.toCapitalized()}Module extends BaseModule {
   String get name => '$featureName';
 
   @override
-  void setupDependencies() {
-    // TODO: add dependency injections here
+  void initialize() {
+    // TODO: Initialize dependencies and configurations here.
   }
 }
 ''');

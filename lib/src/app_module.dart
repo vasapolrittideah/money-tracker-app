@@ -5,7 +5,7 @@ class AppModule {
 
   static final List<BaseModule> _packages = [SharedModule()];
 
-  static void init() {
+  static void initialize() {
     for (var module in _packages) {
       module.initialize();
     }
