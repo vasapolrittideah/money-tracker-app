@@ -29,6 +29,17 @@ flutter:
   assets:
     - packages/shared/assets/config/
 
+  fonts:
+    - family: ibmPlexSansThai
+      fonts:
+        - asset: ./packages/ui/assets/fonts/ibm_plex_sans_thai/IBMPlexSansThai-Thin.ttf
+        - asset: ./packages/ui/assets/fonts/ibm_plex_sans_thai/IBMPlexSansThai-ExtraLight.ttf
+        - asset: ./packages/ui/assets/fonts/ibm_plex_sans_thai/IBMPlexSansThai-Light.ttf
+        - asset: ./packages/ui/assets/fonts/ibm_plex_sans_thai/IBMPlexSansThai-Regular.ttf
+        - asset: ./packages/ui/assets/fonts/ibm_plex_sans_thai/IBMPlexSansThai-Medium.ttf
+        - asset: ./packages/ui/assets/fonts/ibm_plex_sans_thai/IBMPlexSansThai-SemiBold.ttf
+        - asset: ./packages/ui/assets/fonts/ibm_plex_sans_thai/IBMPlexSansThai-Bold.ttf
+
 melos:
   command:
     bootstrap:
