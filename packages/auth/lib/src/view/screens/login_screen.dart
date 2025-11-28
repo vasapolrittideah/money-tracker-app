@@ -1,6 +1,7 @@
 import 'package:auth/generated/locale_keys.g.dart';
 import 'package:auth/src/view/auth_router.dart';
 import 'package:auth/src/view/widgets/login_form.dart';
+import 'package:auth/src/view/widgets/social_button.dart';
 import 'package:flutter/material.dart';
 import 'package:shared/libs.dart';
 import 'package:shared/shared.dart';
@@ -40,6 +41,18 @@ class LoginScreen extends HookWidget {
                       style: context.appTypography.regular.base.copyWith(color: context.appColors.textSub600),
                     ),
                     SizedBox(height: context.appSpacing.s32),
+
+                    // Social Buttons
+                    // const AppSocialButton(provider: AppSocialButtonProvider.apple),
+                    // SizedBox(height: context.appSpacing.x3s),
+                    AppSocialButton(provider: AppSocialButtonProvider.facebook, onTap: () {}),
+                    SizedBox(height: context.appSpacing.s12),
+                    AppSocialButton(provider: AppSocialButtonProvider.google, onTap: () {}),
+
+                    AppDivider(
+                      padding: EdgeInsets.symmetric(vertical: context.appSpacing.s24),
+                      text: AuthLocaleKeys.login_orDivider.tr(),
+                    ),
 
                     LoginForm(
                       key: const Key('login_form'),
