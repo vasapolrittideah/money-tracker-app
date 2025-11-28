@@ -11,3 +11,4 @@ export 'src/storage/hive_manager.dart';
 export 'src/storage/secure_storage.dart';
 export 'src/managers/session_manager.dart';
 export 'src/utilities/directory_util.dart';
+export 'src/l10n/translations_loader.dart';

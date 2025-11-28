@@ -1,5 +1,6 @@
 export 'src/ui_module.dart';
 export 'src/themes/themes.dart';
+export 'src/themes/tokens/tokens.dart';
 export 'generated/assets.gen.dart';
 export 'src/utilities/transition_util.dart';
 export 'src/widgets/buttons/button.dart';
