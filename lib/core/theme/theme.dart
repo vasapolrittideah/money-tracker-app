@@ -28,7 +28,7 @@ class AppTheme {
   /// The default light mode theme instance.
   static final light = AppTheme(
     colorSchema: AppColorSchema.light,
-    typography: AppTypography.base,
+    typography: AppTypography.scaled(),
     dimensions: AppDimensions.base,
     shadows: AppShadows.base,
   );
