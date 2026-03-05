@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:money_tracker/core/theme/theme.dart';
-import 'package:money_tracker/core/theme/tokens/color_schema.dart';
-import 'package:money_tracker/core/theme/tokens/dimensions.dart';
-import 'package:money_tracker/core/theme/tokens/shadows.dart';
-import 'package:money_tracker/core/theme/tokens/typography.dart';
+import 'package:money_tracker/src/core/theme/theme.dart';
+import 'package:money_tracker/src/core/theme/tokens/color_schema.dart';
+import 'package:money_tracker/src/core/theme/tokens/dimensions.dart';
+import 'package:money_tracker/src/core/theme/tokens/shadows.dart';
+import 'package:money_tracker/src/core/theme/tokens/typography.dart';
 
 /// An [InheritedWidget] that propagates [AppTheme] down the widget tree.
 /// Wrap the app (or a subtree) with this widget to make the theme accessible

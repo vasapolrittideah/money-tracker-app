@@ -1,7 +1,7 @@
-import 'package:money_tracker/core/theme/tokens/color_schema.dart';
-import 'package:money_tracker/core/theme/tokens/dimensions.dart';
-import 'package:money_tracker/core/theme/tokens/shadows.dart';
-import 'package:money_tracker/core/theme/tokens/typography.dart';
+import 'package:money_tracker/src/core/theme/tokens/color_schema.dart';
+import 'package:money_tracker/src/core/theme/tokens/dimensions.dart';
+import 'package:money_tracker/src/core/theme/tokens/shadows.dart';
+import 'package:money_tracker/src/core/theme/tokens/typography.dart';
 
 /// The root theme object that aggregates all design tokens for the app.
 /// Holds references to color schema, typography, dimensions, and shadows.
