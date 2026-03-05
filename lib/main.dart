@@ -5,8 +5,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+/// Tracks errors that have already been reported to avoid duplicate logging.
 final _reportedErrors = Expando<bool>('reportedErrors');
 
+/// Entry point. Wraps the app in [runZonedGuarded] to catch both Flutter
+/// framework errors and unhandled Dart exceptions before starting the app.
 Future<void> main() async {
   await runZonedGuarded<Future<void>>(
     () async {
@@ -27,6 +30,8 @@ Future<void> main() async {
   );
 }
 
+/// Initialises third-party services and dependencies (e.g. analytics, crash
+/// reporting). Errors here are fatal — the app will not continue.
 Future<void> _initializeServices() async {
   try {
     debugPrint('🎉 Services initialized successfully');
@@ -37,6 +42,7 @@ Future<void> _initializeServices() async {
 }
 
 /// Configures system UI elements such as status bar and navigation bar.
+/// Errors here are non-fatal — the app can continue with default system UI settings.
 Future<void> _configureSystemUI() async {
   try {
     await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
@@ -59,6 +65,9 @@ Future<void> _configureSystemUI() async {
   }
 }
 
+/// Logs [error] with its [stackTrace] to the appropriate reporting channel.
+/// Subsequent occurrences of the same error instance are silently ignored to
+/// prevent duplicate reports.
 void _handleError(Object error, StackTrace? stackTrace, {String? context}) {
   if (_reportedErrors[error] == true) return;
   _reportedErrors[error] = true;
@@ -67,9 +76,17 @@ void _handleError(Object error, StackTrace? stackTrace, {String? context}) {
     if (kDebugMode) {
       FlutterError.presentError(error);
     }
+
+    // In production, send the error details to a remote logging service
+    // instead of printing to console. Use the `error.exception` and
+    // `error.stack` properties from the FlutterErrorDetails object.
   } else {
     if (kDebugMode) {
       FlutterError.presentError(FlutterErrorDetails(exception: error, stack: stackTrace, library: context));
     }
+
+    // In production, send the error and stack trace to a remote logging
+    // service instead of printing to console. Use the `error` and
+    // `stackTrace` parameters directly.
   }
 }
