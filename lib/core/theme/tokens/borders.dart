@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 /// from a hairline 1 px to a thick 4 px stroke.
 class AppBorders {
   const AppBorders({
+    // Radii
     required this.radiusNone,
     required this.radiusSm,
     required this.radius,
@@ -16,12 +17,14 @@ class AppBorders {
     required this.radius2xl,
     required this.radius3xl,
     required this.radiusFull,
+    // Widths
     required this.widthNone,
     required this.widthThin,
     required this.widthBase,
     required this.widthThick,
   });
 
+  // Radii
   final double radiusNone;
   final double radiusSm;
   final double radius;
@@ -31,7 +34,7 @@ class AppBorders {
   final double radius2xl;
   final double radius3xl;
   final double radiusFull;
-
+  // Widths
   final double widthNone;
   final double widthThin;
   final double widthBase;

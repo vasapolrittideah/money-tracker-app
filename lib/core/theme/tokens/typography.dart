@@ -15,17 +15,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 /// so Flutter scales it correctly at any size.
 class AppTypography {
   const AppTypography({
+    // Titles
     required this.titleH1,
     required this.titleH2,
     required this.titleH3,
     required this.titleH4,
     required this.titleH5,
     required this.titleH6,
+    // Labels
     required this.labelXLarge,
     required this.labelLarge,
     required this.labelMedium,
     required this.labelSmall,
     required this.labelXSmall,
+    // Paragraphs
     required this.paragraphXLarge,
     required this.paragraphLarge,
     required this.paragraphMedium,
@@ -40,14 +43,12 @@ class AppTypography {
   final TextStyle titleH4;
   final TextStyle titleH5;
   final TextStyle titleH6;
-
   // Labels
   final TextStyle labelXLarge;
   final TextStyle labelLarge;
   final TextStyle labelMedium;
   final TextStyle labelSmall;
   final TextStyle labelXSmall;
-
   // Paragraphs
   final TextStyle paragraphXLarge;
   final TextStyle paragraphLarge;
@@ -105,7 +106,6 @@ class AppTypography {
       height: 28 / 20,
       letterSpacing: 0,
     ),
-
     // Label
     labelXLarge: TextStyle(
       fontFamily: _fontFamily,
@@ -142,7 +142,6 @@ class AppTypography {
       height: 16 / 12,
       letterSpacing: 0,
     ),
-
     // Paragraph
     paragraphXLarge: TextStyle(
       fontFamily: _fontFamily,

@@ -25,7 +25,6 @@ class _AppColorPalette {
   static const grayAlpha24 = Color(0x3DA3A3A3);
   static const grayAlpha16 = Color(0x29A3A3A3);
   static const grayAlpha10 = Color(0x1AA3A3A3);
-
   // Blue
   static const blue50 = Color(0xFFEBF1FF);
   static const blue100 = Color(0xFFD5E2FF);
@@ -41,7 +40,6 @@ class _AppColorPalette {
   static const blueAlpha24 = Color(0x3D476CFF);
   static const blueAlpha16 = Color(0x29476CFF);
   static const blueAlpha10 = Color(0x1A476CFF);
-
   // Orange
   static const orange50 = Color(0xFFFFF3EB);
   static const orange100 = Color(0xFFFFE6D5);
@@ -57,7 +55,6 @@ class _AppColorPalette {
   static const orangeAlpha24 = Color(0x3DFF9147);
   static const orangeAlpha16 = Color(0x29FF9147);
   static const orangeAlpha10 = Color(0x1AFF9147);
-
   // Red
   static const red50 = Color(0xFFFFEBEC);
   static const red100 = Color(0xFFFFD5D8);
@@ -73,7 +70,6 @@ class _AppColorPalette {
   static const redAlpha24 = Color(0x3DFB3748);
   static const redAlpha16 = Color(0x29FB3748);
   static const redAlpha10 = Color(0x1AFB3748);
-
   // Green
   static const green50 = Color(0xFFE0FAEC);
   static const green100 = Color(0xFFD0FBE9);
@@ -89,7 +85,6 @@ class _AppColorPalette {
   static const greenAlpha24 = Color(0x3D1FC16B);
   static const greenAlpha16 = Color(0x291FC16B);
   static const greenAlpha10 = Color(0x1A1FC16B);
-
   // Yellow
   static const yellow50 = Color(0xFFFFF4D6);
   static const yellow100 = Color(0xFFFFEFCC);
@@ -105,7 +100,6 @@ class _AppColorPalette {
   static const yellowAlpha24 = Color(0x3DFBC64B);
   static const yellowAlpha16 = Color(0x29FBC64B);
   static const yellowAlpha10 = Color(0x1AFBC64B);
-
   // Purple
   static const purple50 = Color(0xFFEFEBFF);
   static const purple100 = Color(0xFFDCD5FF);
@@ -121,7 +115,6 @@ class _AppColorPalette {
   static const purpleAlpha24 = Color(0x3D784DEF);
   static const purpleAlpha16 = Color(0x29784DEF);
   static const purpleAlpha10 = Color(0x1A784DEF);
-
   // Static
   static const white = Colors.white;
   static const black = Colors.black;
@@ -140,7 +133,6 @@ class AppColorSchema {
     required this.textSoft400,
     required this.textDisabled300,
     required this.textWhite0,
-
     // Background
     required this.bgStrong950,
     required this.bgSurface800,
@@ -149,42 +141,35 @@ class AppColorSchema {
     required this.bgWeak50,
     required this.bgWeak25,
     required this.bgWhite0,
-
     // Border
     required this.borderStrong950,
     required this.borderSub300,
     required this.borderSoft200,
     required this.borderWhite0,
-
     // Primary
     required this.primaryDark,
     required this.primaryDarker,
     required this.primaryBase,
-
     // Faded
     required this.fadedDark,
     required this.fadedBase,
     required this.fadedLight,
     required this.fadedLighter,
-
     // Information
     required this.infoDark,
     required this.infoBase,
     required this.infoLight,
     required this.infoLighter,
-
     // Warning
     required this.warningDark,
     required this.warningBase,
     required this.warningLight,
     required this.warningLighter,
-
     // Error
     required this.errorDark,
     required this.errorBase,
     required this.errorLight,
     required this.errorLighter,
-
     // Success
     required this.successDark,
     required this.successBase,
@@ -198,7 +183,6 @@ class AppColorSchema {
   final Color textSoft400;
   final Color textDisabled300;
   final Color textWhite0;
-
   // Background
   final Color bgStrong950;
   final Color bgSurface800;
@@ -207,42 +191,35 @@ class AppColorSchema {
   final Color bgWeak50;
   final Color bgWeak25;
   final Color bgWhite0;
-
   // Border
   final Color borderStrong950;
   final Color borderSub300;
   final Color borderSoft200;
   final Color borderWhite0;
-
   // Primary
   final Color primaryDark;
   final Color primaryDarker;
   final Color primaryBase;
-
   // Faded
   final Color fadedDark;
   final Color fadedBase;
   final Color fadedLight;
   final Color fadedLighter;
-
   // Information
   final Color infoDark;
   final Color infoBase;
   final Color infoLight;
   final Color infoLighter;
-
   // Warning
   final Color warningDark;
   final Color warningBase;
   final Color warningLight;
   final Color warningLighter;
-
   // Error
   final Color errorDark;
   final Color errorBase;
   final Color errorLight;
   final Color errorLighter;
-
   // Success
   final Color successDark;
   final Color successBase;
@@ -258,7 +235,6 @@ class AppColorSchema {
     textSoft400: _AppColorPalette.gray400,
     textDisabled300: _AppColorPalette.gray300,
     textWhite0: _AppColorPalette.white,
-
     // Background
     bgStrong950: _AppColorPalette.gray950,
     bgSurface800: _AppColorPalette.gray800,
@@ -267,42 +243,35 @@ class AppColorSchema {
     bgWeak50: _AppColorPalette.gray50,
     bgWeak25: Color(0xFFF7F7F7),
     bgWhite0: _AppColorPalette.white,
-
     // Border
     borderStrong950: _AppColorPalette.gray950,
     borderSub300: _AppColorPalette.gray300,
     borderSoft200: _AppColorPalette.gray200,
     borderWhite0: _AppColorPalette.white,
-
     // Primary
     primaryDark: _AppColorPalette.purple800,
     primaryDarker: _AppColorPalette.purple700,
     primaryBase: _AppColorPalette.purple500,
-
     // Faded
     fadedDark: _AppColorPalette.gray800,
     fadedBase: _AppColorPalette.gray500,
     fadedLight: _AppColorPalette.gray200,
     fadedLighter: _AppColorPalette.gray100,
-
     // Information
     infoDark: _AppColorPalette.purple950,
     infoBase: _AppColorPalette.purple500,
     infoLight: _AppColorPalette.purple200,
     infoLighter: _AppColorPalette.purple50,
-
     // Warning
     warningDark: _AppColorPalette.orange950,
     warningBase: _AppColorPalette.orange500,
     warningLight: _AppColorPalette.orange200,
     warningLighter: _AppColorPalette.orange50,
-
     // Error
     errorDark: _AppColorPalette.red950,
     errorBase: _AppColorPalette.red500,
     errorLight: _AppColorPalette.red200,
     errorLighter: _AppColorPalette.red50,
-
     // Success
     successDark: _AppColorPalette.green950,
     successBase: _AppColorPalette.green500,
