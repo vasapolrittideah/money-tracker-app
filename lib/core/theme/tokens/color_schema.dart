@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 /// Internal raw color palette — all primitive color values used across the app.
+///
 /// This class is private and should never be referenced directly from UI code.
 /// Use [AppColorSchema] semantic tokens instead.
 class _AppColorPalette {
@@ -127,6 +128,7 @@ class _AppColorPalette {
 }
 
 /// Semantic color tokens mapped to their purpose in the UI.
+///
 /// Consumers should always use these tokens rather than raw colors so that
 /// switching themes (e.g. dark mode) only requires swapping the [AppColorSchema]
 /// instance without touching any widget code.

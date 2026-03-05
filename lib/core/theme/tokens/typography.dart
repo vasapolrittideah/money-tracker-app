@@ -55,27 +55,6 @@ class AppTypography {
   final TextStyle paragraphSmall;
   final TextStyle paragraphXSmall;
 
-  /// Returns a copy of [base] with every [TextStyle.fontSize] scaled by
-  /// [ScreenUtil] (`.sp`). Call this only after `ScreenUtil.init()` has run.
-  static AppTypography scaled() => AppTypography(
-    titleH1: base.titleH1.copyWith(fontSize: base.titleH1.fontSize!.sp),
-    titleH2: base.titleH2.copyWith(fontSize: base.titleH2.fontSize!.sp),
-    titleH3: base.titleH3.copyWith(fontSize: base.titleH3.fontSize!.sp),
-    titleH4: base.titleH4.copyWith(fontSize: base.titleH4.fontSize!.sp),
-    titleH5: base.titleH5.copyWith(fontSize: base.titleH5.fontSize!.sp),
-    titleH6: base.titleH6.copyWith(fontSize: base.titleH6.fontSize!.sp),
-    labelXLarge: base.labelXLarge.copyWith(fontSize: base.labelXLarge.fontSize!.sp),
-    labelLarge: base.labelLarge.copyWith(fontSize: base.labelLarge.fontSize!.sp),
-    labelMedium: base.labelMedium.copyWith(fontSize: base.labelMedium.fontSize!.sp),
-    labelSmall: base.labelSmall.copyWith(fontSize: base.labelSmall.fontSize!.sp),
-    labelXSmall: base.labelXSmall.copyWith(fontSize: base.labelXSmall.fontSize!.sp),
-    paragraphXLarge: base.paragraphXLarge.copyWith(fontSize: base.paragraphXLarge.fontSize!.sp),
-    paragraphLarge: base.paragraphLarge.copyWith(fontSize: base.paragraphLarge.fontSize!.sp),
-    paragraphMedium: base.paragraphMedium.copyWith(fontSize: base.paragraphMedium.fontSize!.sp),
-    paragraphSmall: base.paragraphSmall.copyWith(fontSize: base.paragraphSmall.fontSize!.sp),
-    paragraphXSmall: base.paragraphXSmall.copyWith(fontSize: base.paragraphXSmall.fontSize!.sp),
-  );
-
   /// The font family used for all text styles.
   static const _fontFamily = 'Roboto';
 
@@ -200,5 +179,26 @@ class AppTypography {
       height: 16 / 12,
       letterSpacing: 0,
     ),
+  );
+
+  /// Returns a copy of [base] with every [TextStyle.fontSize] scaled by
+  /// [ScreenUtil] (`.sp`). Call this only after `ScreenUtil.init()` has run.
+  static AppTypography scaled() => AppTypography(
+    titleH1: base.titleH1.copyWith(fontSize: base.titleH1.fontSize!.sp),
+    titleH2: base.titleH2.copyWith(fontSize: base.titleH2.fontSize!.sp),
+    titleH3: base.titleH3.copyWith(fontSize: base.titleH3.fontSize!.sp),
+    titleH4: base.titleH4.copyWith(fontSize: base.titleH4.fontSize!.sp),
+    titleH5: base.titleH5.copyWith(fontSize: base.titleH5.fontSize!.sp),
+    titleH6: base.titleH6.copyWith(fontSize: base.titleH6.fontSize!.sp),
+    labelXLarge: base.labelXLarge.copyWith(fontSize: base.labelXLarge.fontSize!.sp),
+    labelLarge: base.labelLarge.copyWith(fontSize: base.labelLarge.fontSize!.sp),
+    labelMedium: base.labelMedium.copyWith(fontSize: base.labelMedium.fontSize!.sp),
+    labelSmall: base.labelSmall.copyWith(fontSize: base.labelSmall.fontSize!.sp),
+    labelXSmall: base.labelXSmall.copyWith(fontSize: base.labelXSmall.fontSize!.sp),
+    paragraphXLarge: base.paragraphXLarge.copyWith(fontSize: base.paragraphXLarge.fontSize!.sp),
+    paragraphLarge: base.paragraphLarge.copyWith(fontSize: base.paragraphLarge.fontSize!.sp),
+    paragraphMedium: base.paragraphMedium.copyWith(fontSize: base.paragraphMedium.fontSize!.sp),
+    paragraphSmall: base.paragraphSmall.copyWith(fontSize: base.paragraphSmall.fontSize!.sp),
+    paragraphXSmall: base.paragraphXSmall.copyWith(fontSize: base.paragraphXSmall.fontSize!.sp),
   );
 }

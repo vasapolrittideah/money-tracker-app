@@ -1,15 +1,8 @@
 /// A type-safe spacing and sizing scale based on a 4 pt grid.
 ///
-/// Each token name (`dimN`) maps to a Tailwind-style scale where N is the
-/// Tailwind unit and the value is `N * 4` logical pixels. Exceptions:
-/// - [dim0] → 0 px (no spacing)
-/// - [dimPx] → 1 px (hairline / divider)
-/// - [dim0_5] → 2 px (half-unit)
-/// - [dim1_5] → 6 px (1.5 units)
-/// - [dim2_5] → 10 px (2.5 units)
-///
-/// Prefer these tokens over hard-coded values so that spacing stays consistent
-/// and can be adjusted globally in one place.
+/// Token names follow a Tailwind-style scale where N maps to `N * 4` logical
+/// pixels. Prefer these tokens over hard-coded values so that spacing stays
+/// consistent and can be adjusted globally in one place.
 class AppDimensions {
   const AppDimensions({
     required this.dim0,
