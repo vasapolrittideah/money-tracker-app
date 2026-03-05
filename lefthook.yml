@@ -1,0 +1,9 @@
+commit-msg:
+  commands:
+    conventional-commit:
+      run: .fvm/flutter_sdk/bin/dart tools/check_commit_msg.dart {1}
+
+pre-commit:
+  commands:
+    format:
+      run: .fvm/flutter_sdk/bin/dart format .

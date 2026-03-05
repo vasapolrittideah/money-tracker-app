@@ -61,51 +61,51 @@ class AppDimensions {
 
   /// The default 4 pt grid scale. Values are in logical pixels.
   static const base = AppDimensions(
-    dim0: 0,      // 0 px
-    dimPx: 1,     // 1 px — hairline / divider
-    dim0_5: 2,    // 2 px
-    dim1: 4,      // 4 px
-    dim1_5: 6,    // 6 px
-    dim2: 8,      // 8 px
-    dim2_5: 10,   // 10 px
-    dim3: 12,     // 12 px
-    dim4: 16,     // 16 px
-    dim5: 20,     // 20 px
-    dim6: 24,     // 24 px
-    dim7: 28,     // 28 px
-    dim8: 32,     // 32 px
-    dim9: 36,     // 36 px
-    dim10: 40,    // 40 px
-    dim11: 44,    // 44 px — minimum tap target height (HIG / Material)
-    dim12: 48,    // 48 px
-    dim14: 56,    // 56 px
-    dim16: 64,    // 64 px
-    dim20: 80,    // 80 px
-    dim24: 96,    // 96 px
-    dim28: 112,   // 112 px
-    dim32: 128,   // 128 px
-    dim36: 144,   // 144 px
-    dim40: 160,   // 160 px
-    dim44: 176,   // 176 px
-    dim48: 192,   // 192 px
-    dim52: 208,   // 208 px
-    dim56: 224,   // 224 px
-    dim60: 240,   // 240 px
-    dim64: 256,   // 256 px
-    dim72: 288,   // 288 px
-    dim80: 320,   // 320 px
-    dim96: 384,   // 384 px
-    dim104: 416,  // 416 px
-    dim112: 448,  // 448 px
-    dim128: 512,  // 512 px
-    dim144: 576,  // 576 px
-    dim160: 640,  // 640 px
-    dim176: 704,  // 704 px
-    dim192: 768,  // 768 px
-    dim208: 832,  // 832 px
-    dim224: 896,  // 896 px
-    dim240: 960,  // 960 px
-    dim256: 1024, // 1024 px
+    dim0: 0,
+    dimPx: 1,
+    dim0_5: 2,
+    dim1: 4,
+    dim1_5: 6,
+    dim2: 8,
+    dim2_5: 10,
+    dim3: 12,
+    dim4: 16,
+    dim5: 20,
+    dim6: 24,
+    dim7: 28,
+    dim8: 32,
+    dim9: 36,
+    dim10: 40,
+    dim11: 44,
+    dim12: 48,
+    dim14: 56,
+    dim16: 64,
+    dim20: 80,
+    dim24: 96,
+    dim28: 112,
+    dim32: 128,
+    dim36: 144,
+    dim40: 160,
+    dim44: 176,
+    dim48: 192,
+    dim52: 208,
+    dim56: 224,
+    dim60: 240,
+    dim64: 256,
+    dim72: 288,
+    dim80: 320,
+    dim96: 384,
+    dim104: 416,
+    dim112: 448,
+    dim128: 512,
+    dim144: 576,
+    dim160: 640,
+    dim176: 704,
+    dim192: 768,
+    dim208: 832,
+    dim224: 896,
+    dim240: 960,
+    dim256: 1024,
   );
 
   final double dim0;
