@@ -25,7 +25,7 @@ class AppTheme {
   /// Box shadow definitions for the current theme.
   final AppShadows shadows;
 
-  /// The default light mode theme instance.
+  /// Default token values for the light mode theme.
   static final light = AppTheme(
     colorSchema: AppColorSchema.light,
     typography: AppTypography.scaled(),
