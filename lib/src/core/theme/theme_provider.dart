@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:money_tracker/src/core/theme/theme.dart';
+import 'package:money_tracker/src/core/theme/tokens/borders.dart';
 import 'package:money_tracker/src/core/theme/tokens/color_schema.dart';
 import 'package:money_tracker/src/core/theme/tokens/dimensions.dart';
 import 'package:money_tracker/src/core/theme/tokens/shadows.dart';
@@ -31,6 +32,9 @@ class AppThemeProvider extends InheritedWidget {
 extension AppThemeContext on BuildContext {
   /// The current [AppTheme].
   AppTheme get theme => AppThemeProvider.of(this);
+
+  /// Shorthand for `theme.borders`.
+  AppBorders get borders => theme.borders;
 
   /// Shorthand for `theme.colorSchema`.
   AppColorSchema get colors => theme.colorSchema;
