@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:money_tracker/app.dart';
 
 /// Tracks errors that have already been reported to avoid duplicate logging.
 final _reportedErrors = Expando<bool>('reportedErrors');
@@ -22,7 +23,7 @@ Future<void> main() async {
       await _initializeServices();
       await _configureSystemUI();
 
-      // TODO: Run the app
+      runApp(MoneyTrackerApp());
     },
     (error, stackTrace) {
       _handleError(error, stackTrace, context: 'Uncaught error');
