@@ -5,9 +5,7 @@ import 'package:money_tracker/src/core/theme/theme.dart';
 import 'package:money_tracker/src/core/theme/theme_provider.dart';
 
 class MoneyTrackerApp extends StatelessWidget {
-  MoneyTrackerApp({super.key});
-
-  final AppTheme _theme = AppTheme.light;
+  const MoneyTrackerApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +16,7 @@ class MoneyTrackerApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return AppThemeProvider(
-          theme: _theme,
+          theme: AppTheme.light,
           child: MaterialApp.router(
             key: const Key('MoneyTrackerApp'),
             debugShowCheckedModeBanner: false,
