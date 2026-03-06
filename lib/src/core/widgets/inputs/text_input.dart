@@ -6,6 +6,8 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:money_tracker/src/core/theme/theme_provider.dart';
 import 'package:remixicon/remixicon.dart';
 
+typedef ValidatorFunction = String? Function(String?);
+
 class AppTextInput extends HookWidget {
   const AppTextInput({
     super.key,
@@ -36,7 +38,7 @@ class AppTextInput extends HookWidget {
   final Widget? suffixIcon;
   final TextInputType? keyboardType;
   final AutovalidateMode autovalidateMode;
-  final List<String? Function(String?)>? validators;
+  final List<ValidatorFunction>? validators;
 
   @override
   Widget build(BuildContext context) {
@@ -48,26 +50,40 @@ class AppTextInput extends HookWidget {
 
     // Merge internal validation error with external errorMessage.
     // External errorMessage takes priority (e.g. server-side errors).
-    final effectiveError = errorMessage ?? validationError.value;
+    final String? effectiveError = errorMessage ?? validationError.value;
 
-    final effectiveBackgroundColor = disabled ? context.colors.bgSub200 : context.colors.bgWhite0;
-    final effectiveBorderColor = effectiveError != null
-        ? context.colors.errorBase
-        : (focusNode.hasFocus ? context.colors.borderStrong950 : context.colors.borderSub300);
-    final effectiveLabelColor = effectiveError != null
-        ? context.colors.errorBase
-        : (disabled ? context.colors.textSoft400 : context.colors.textStrong950);
-    final effectiveShadow = !focusNode.hasFocus && !disabled ? context.shadows.sm : null;
+    final Color effectiveBackgroundColor = () {
+      if (disabled) return context.colors.bgSub200;
+      return context.colors.bgWhite0;
+    }();
 
-    final composedValidator = validators != null
-        ? (String? value) {
-            final error = FormBuilderValidators.compose<String>(validators!)(value);
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              validationError.value = error;
-            });
-            return error;
-          }
-        : null;
+    final Color effectiveBorderColor = () {
+      if (effectiveError != null) return context.colors.errorBase;
+      if (focusNode.hasFocus) return context.colors.borderStrong950;
+      return context.colors.borderSub300;
+    }();
+
+    final Color effectiveLabelColor = () {
+      if (effectiveError != null) return context.colors.errorBase;
+      if (disabled) return context.colors.textSoft400;
+      return context.colors.textStrong950;
+    }();
+
+    final List<BoxShadow>? effectiveShadow = () {
+      if (!focusNode.hasFocus && !disabled) return context.shadows.sm;
+    }();
+
+    final ValidatorFunction? composedValidator = () {
+      if (validators != null) {
+        return (String? value) {
+          final error = FormBuilderValidators.compose<String>(validators!)(value);
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            validationError.value = error;
+          });
+          return error;
+        };
+      }
+    }();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
