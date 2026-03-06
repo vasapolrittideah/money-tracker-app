@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:money_tracker/src/core/gen/fonts.gen.dart';
 
 /// Defines all text styles used throughout the app.
 ///
@@ -57,7 +58,7 @@ class AppTypography {
   final TextStyle paragraphXSmall;
 
   /// The font family used for all text styles.
-  static const _fontFamily = 'Roboto';
+  static const _fontFamily = FontFamily.ibmPlexSansThai;
 
   /// The default typography scale. Use this as the single source of truth for
   /// all text styles; override individual styles at the widget level only when
