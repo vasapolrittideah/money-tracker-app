@@ -22,8 +22,11 @@ class AppTextInput extends HookWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.keyboardType,
+    this.textInputAction,
     this.autovalidateMode = AutovalidateMode.onUserInteraction,
     this.validators,
+    this.focusNode,
+    this.onSubmitted,
   });
 
   final String name;
@@ -37,13 +40,16 @@ class AppTextInput extends HookWidget {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final TextInputType? keyboardType;
+  final TextInputAction? textInputAction;
   final AutovalidateMode autovalidateMode;
   final List<ValidatorFunction>? validators;
+  final FocusNode? focusNode;
+  final void Function(String?)? onSubmitted;
 
   @override
   Widget build(BuildContext context) {
     final textController = useTextEditingController(text: initialValue);
-    final focusNode = useFocusNode();
+    final focusNode = this.focusNode ?? useFocusNode();
     final textObscured = useState(obscureText);
     final validationError = useState<String?>(null);
     useListenable<FocusNode>(focusNode);
@@ -109,6 +115,7 @@ class AppTextInput extends HookWidget {
                   enabled: !disabled,
                   readOnly: readOnly,
                   obscureText: textObscured.value,
+                  textInputAction: textInputAction,
                   keyboardType: keyboardType,
                   controller: textController,
                   focusNode: focusNode,
@@ -117,7 +124,12 @@ class AppTextInput extends HookWidget {
                   cursorWidth: 1,
                   autovalidateMode: autovalidateMode,
                   validator: composedValidator,
-                  onTapOutside: (_) => focusNode.unfocus(),
+                  onTapOutside: (_) {
+                    WidgetsBinding.instance.addPostFrameCallback((_) {
+                      if (focusNode.hasFocus) focusNode.unfocus();
+                    });
+                  },
+                  onSubmitted: onSubmitted,
                   decoration: InputDecoration(
                     border: InputBorder.none,
                     focusedBorder: InputBorder.none,
