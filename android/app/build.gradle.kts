@@ -41,17 +41,17 @@ android {
     flavorDimensions += "app"
 
     productFlavors {
-        create("dev") {
+        create("development") {
             dimension = "app"
             resValue("string", "app_name", "dev Money Tracker")
             applicationIdSuffix = ".dev"
         }
-        create("stg") {
+        create("staging") {
             dimension = "app"
             resValue("string", "app_name", "stg Money Tracker")
             applicationIdSuffix = ".stg"
         }
-        create("prod") {
+        create("production") {
             dimension = "app"
             resValue("string", "app_name", "Money Tracker")
             applicationIdSuffix = ""
