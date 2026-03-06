@@ -101,49 +101,138 @@ class AppDimensions {
     dim256: 1024,
   );
 
+  /// 0 px. Useful for removing spacing by setting a token instead of hardcoding 0.
   final double dim0;
+
+  /// 1 px. Useful for hairline borders and dividers.
   final double dimPx;
+
+  /// 2 px.
   final double dim0_5;
+
+  /// 4 px.
   final double dim1;
+
+  /// 6 px.
   final double dim1_5;
+
+  /// 8 px.
   final double dim2;
+
+  /// 10 px.
   final double dim2_5;
+
+  /// 12 px.
   final double dim3;
+
+  /// 16 px.
   final double dim4;
+
+  /// 20 px.
   final double dim5;
+
+  /// 24 px.
   final double dim6;
+
+  /// 28 px.
   final double dim7;
+
+  /// 32 px.
   final double dim8;
+
+  /// 36 px.
   final double dim9;
+
+  /// 40 px.
   final double dim10;
+
+  /// 44 px.
   final double dim11;
+
+  /// 48 px.
   final double dim12;
+
+  /// 56 px.
   final double dim14;
+
+  /// 64 px.
   final double dim16;
+
+  /// 80 px.
   final double dim20;
+
+  /// 96 px.
   final double dim24;
+
+  /// 112 px.
   final double dim28;
+
+  /// 128 px.
   final double dim32;
+
+  /// 144 px.
   final double dim36;
+
+  /// 160 px.
   final double dim40;
+
+  /// 176 px.
   final double dim44;
+
+  /// 192 px.
   final double dim48;
+
+  /// 208 px.
   final double dim52;
+
+  /// 224 px.
   final double dim56;
+
+  /// 240 px.
   final double dim60;
+
+  /// 256 px.
   final double dim64;
+
+  /// 288 px.
   final double dim72;
+
+  /// 320 px.
   final double dim80;
+
+  /// 384 px.
   final double dim96;
+
+  /// 416 px.
   final double dim104;
+
+  /// 448 px.
   final double dim112;
+
+  /// 512 px.
   final double dim128;
+
+  /// 576 px.
   final double dim144;
+
+  /// 640 px.
   final double dim160;
+
+  /// 704 px.
   final double dim176;
+
+  /// 768 px.
   final double dim192;
+
+  /// 832 px.
   final double dim208;
+
+  /// 896 px.
   final double dim224;
+
+  /// 960 px.
   final double dim240;
+
+  /// 1024 px.
   final double dim256;
 }
