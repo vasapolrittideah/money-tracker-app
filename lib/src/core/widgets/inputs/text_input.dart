@@ -58,38 +58,31 @@ class AppTextInput extends HookWidget {
     // External errorMessage takes priority (e.g. server-side errors).
     final String? effectiveError = errorMessage ?? validationError.value;
 
-    final Color effectiveBackgroundColor = () {
-      if (disabled) return context.colors.bgSub200;
-      return context.colors.bgWhite0;
-    }();
+    final Color effectiveBackgroundColor = disabled ? context.colors.bgSub200 : context.colors.bgWhite0;
 
-    final Color effectiveBorderColor = () {
-      if (effectiveError != null) return context.colors.errorBase;
-      if (focusNode.hasFocus) return context.colors.borderStrong950;
-      return context.colors.borderSub300;
-    }();
+    final Color effectiveBorderColor = switch (null) {
+      _ when effectiveError != null => context.colors.errorBase,
+      _ when focusNode.hasFocus => context.colors.borderStrong950,
+      _ => context.colors.borderSub300,
+    };
 
-    final Color effectiveLabelColor = () {
-      if (effectiveError != null) return context.colors.errorBase;
-      if (disabled) return context.colors.textSoft400;
-      return context.colors.textStrong950;
-    }();
+    final Color effectiveLabelColor = switch (null) {
+      _ when effectiveError != null => context.colors.errorBase,
+      _ when disabled => context.colors.textSoft400,
+      _ => context.colors.textStrong950,
+    };
 
-    final List<BoxShadow>? effectiveShadow = () {
-      if (!focusNode.hasFocus && !disabled) return context.shadows.sm;
-    }();
+    final List<BoxShadow>? effectiveShadow = !focusNode.hasFocus && !disabled ? context.shadows.sm : null;
 
-    final ValidatorFunction? composedValidator = () {
-      if (validators != null) {
-        return (String? value) {
-          final error = FormBuilderValidators.compose<String>(validators!)(value);
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            validationError.value = error;
-          });
-          return error;
-        };
-      }
-    }();
+    final ValidatorFunction? composedValidator = validators != null
+        ? (String? value) {
+            final error = FormBuilderValidators.compose<String>(validators!)(value);
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              validationError.value = error;
+            });
+            return error;
+          }
+        : null;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
