@@ -24,9 +24,9 @@ class AppSnackbar {
     };
 
     final effectiveIcon = switch (type) {
-      SnackbarType.success => RemixIcons.check_line,
-      SnackbarType.error => RemixIcons.error_warning_line,
-      SnackbarType.info => RemixIcons.information_line,
+      SnackbarType.success => RemixIcons.check_fill,
+      SnackbarType.error => RemixIcons.error_warning_fill,
+      SnackbarType.info => RemixIcons.information_fill,
     };
 
     final Widget snackbarContent = Padding(
