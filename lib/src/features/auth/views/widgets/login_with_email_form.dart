@@ -18,9 +18,15 @@ class LoginWithEmailForm extends HookWidget {
   Widget build(BuildContext context) {
     final emailFocusNode = useFocusNode();
     final passwordFocusNode = useFocusNode();
+    final passwordHasError = useState(false);
 
     return FormBuilder(
       key: _formKey,
+      onChanged: () {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          passwordHasError.value = _formKey.currentState?.fields[_passwordTextInputKey]?.hasError ?? false;
+        });
+      },
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -55,7 +61,7 @@ class LoginWithEmailForm extends HookWidget {
               passwordFocusNode.unfocus();
             },
           ),
-          SizedBox(height: context.dimensions.dim3.h),
+          if (!passwordHasError.value) SizedBox(height: context.dimensions.dim2.h),
           AppButton(
             text: 'ลืมรหัสผ่าน?',
             variant: ButtonVariant.text,
@@ -63,7 +69,7 @@ class LoginWithEmailForm extends HookWidget {
             size: ButtonSize.xsmall,
             onPressed: () {},
           ),
-          SizedBox(height: context.dimensions.dim3.h),
+          SizedBox(height: context.dimensions.dim1_5.h),
           AppButton(
             text: 'เข้าสู่ระบบ',
             loadingText: 'กำลังเข้าสู่ระบบ...',
