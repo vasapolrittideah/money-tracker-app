@@ -42,7 +42,7 @@ class AppHeader extends StatelessWidget implements PreferredSizeWidget {
               if (title != null)
                 Text(
                   title!,
-                  style: context.typography.textXLarge.copyWith(
+                  style: context.typography.text2XLarge.copyWith(
                     color: context.colors.textStrong950,
                     fontWeight: FontWeight.bold,
                   ),
