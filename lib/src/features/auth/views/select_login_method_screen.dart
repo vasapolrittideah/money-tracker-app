@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:money_tracker/src/app_router.dart';
 import 'package:money_tracker/src/core/gen/assets.gen.dart';
 import 'package:money_tracker/src/core/theme/theme_provider.dart';
 import 'package:money_tracker/src/core/widgets/buttons/button.dart';
@@ -53,7 +55,9 @@ class SelectLoginMethodScreen extends StatelessWidget {
                     SizedBox(height: context.dimensions.dim3.h),
                     LoginMethodButton(
                       customMethod: (name: 'อีเมล', icon: Icon(RemixIcons.mail_line, size: context.dimensions.dim5.r)),
-                      onPressed: () {},
+                      onPressed: () {
+                        context.push(AppRouter.loginWithEmail);
+                      },
                     ),
                   ],
                 ),
