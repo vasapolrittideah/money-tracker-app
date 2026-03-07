@@ -11,7 +11,7 @@ class AppButton extends StatelessWidget {
   const AppButton({
     super.key,
     required this.text,
-    this.prefix,
+    this.prefixIcon,
     this.loading = false,
     this.disabled = false,
     this.loadingText,
@@ -25,7 +25,7 @@ class AppButton extends StatelessWidget {
   final String text;
   final bool loading;
   final bool disabled;
-  final Widget? prefix;
+  final Widget? prefixIcon;
   final String? loadingText;
   final Color? backgroundColor;
   final ButtonVariant variant;
@@ -85,7 +85,7 @@ class AppButton extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               if (loading) ...[AppLoadingIndicator(), SizedBox(width: context.dimensions.dim2.w)],
-              if (prefix != null && !loading) ...[prefix!, SizedBox(width: context.dimensions.dim2.w)],
+              if (prefixIcon != null && !loading) ...[prefixIcon!, SizedBox(width: context.dimensions.dim2.w)],
               Text(
                 effectiveText,
                 style: context.typography.textBase.copyWith(color: effectiveTextColor, fontWeight: FontWeight.w500),
