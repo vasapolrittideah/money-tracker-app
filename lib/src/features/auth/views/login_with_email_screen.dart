@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:money_tracker/src/app_router.dart';
 import 'package:money_tracker/src/core/theme/theme_provider.dart';
 import 'package:money_tracker/src/core/widgets/buttons/button.dart';
 import 'package:money_tracker/src/core/widgets/layout/header.dart';
@@ -34,7 +36,9 @@ class LoginWithEmailScreen extends StatelessWidget {
                 text: 'ยังไม่ได้เป็นสมาชิก? สมัครเลย',
                 variant: ButtonVariant.text,
                 size: ButtonSize.xsmall,
-                onPressed: () {},
+                onPressed: () {
+                  context.pushReplacement(AppRouter.register);
+                },
               ),
             ),
           ],

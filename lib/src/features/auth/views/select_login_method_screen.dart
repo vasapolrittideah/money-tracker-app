@@ -69,7 +69,9 @@ class SelectLoginMethodScreen extends StatelessWidget {
                 text: 'ยังไม่ได้เป็นสมาชิก? สมัครเลย',
                 variant: ButtonVariant.text,
                 size: ButtonSize.xsmall,
-                onPressed: () {},
+                onPressed: () {
+                  context.push(AppRouter.register);
+                },
               ),
             ),
           ],
