@@ -154,7 +154,7 @@ class AppTextInput extends HookWidget {
           SizedBox(height: context.dimensions.dim1_5.h),
           Row(
             children: [
-              Icon(RemixIcons.error_warning_line, size: context.dimensions.dim3.r, color: context.colors.errorBase),
+              Icon(RemixIcons.error_warning_fill, size: context.dimensions.dim3.r, color: context.colors.errorBase),
               SizedBox(width: context.dimensions.dim1.w),
               Text(effectiveError, style: context.typography.textSmall.copyWith(color: context.colors.errorBase)),
             ],
