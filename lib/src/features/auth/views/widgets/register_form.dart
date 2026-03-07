@@ -90,7 +90,7 @@ class RegisterForm extends HookWidget {
             required: false,
             textInputAction: TextInputAction.next,
             focusNode: nameFocusNode,
-            validators: [FormBuilderValidators.required(errorText: 'กรุณากรอกชื่อ')],
+            validators: [],
             onSubmitted: (_) {
               FocusScope.of(context).requestFocus(passwordFocusNode);
             },
