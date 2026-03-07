@@ -72,8 +72,6 @@ class AppTextInput extends HookWidget {
       _ => context.colors.textStrong950,
     };
 
-    final List<BoxShadow>? effectiveShadow = !focusNode.hasFocus && !disabled ? context.shadows.sm : null;
-
     final ValidatorFunction? composedValidator = validators != null
         ? (String? value) {
             final error = FormBuilderValidators.compose<String>(validators!)(value);
@@ -96,7 +94,6 @@ class AppTextInput extends HookWidget {
             color: effectiveBackgroundColor,
             borderRadius: context.borders.radiusMdAll,
             border: Border.all(color: effectiveBorderColor, width: 1),
-            boxShadow: effectiveShadow,
           ),
           child: Row(
             children: [
