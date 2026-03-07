@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:money_tracker/src/core/utils/transition_util.dart';
+import 'package:money_tracker/src/features/auth/views/select_login_method_screen.dart';
 import 'package:money_tracker/src/features/splash/views/splash_screen.dart';
 
 /// Centralized routing configuration for the app using [GoRouter].
@@ -11,6 +12,7 @@ class AppRouter {
   AppRouter._();
 
   static const String splash = '/';
+  static const String selectLoginMethod = '/select-login-method';
 
   /// The single [GoRouter] instance shared across the entire app.
   ///
@@ -21,9 +23,12 @@ class AppRouter {
       // Root route — always the first screen shown on launch.
       GoRoute(
         path: splash,
-        pageBuilder: (context, state) {
-          return TransitionUtil.slideTransitionPage(state: state, child: const SplashScreen());
-        },
+        pageBuilder: (context, state) => TransitionUtil.slideTransitionPage(state: state, child: const SplashScreen()),
+      ),
+      GoRoute(
+        path: selectLoginMethod,
+        pageBuilder: (context, state) =>
+            TransitionUtil.slideTransitionPage(state: state, child: const SelectLoginMethodScreen()),
       ),
     ],
   );
