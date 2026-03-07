@@ -13,7 +13,9 @@ class AppDimensions {
     required this.dim2,
     required this.dim2_5,
     required this.dim3,
+    required this.dim3_5,
     required this.dim4,
+    required this.dim4_5,
     required this.dim5,
     required this.dim6,
     required this.dim7,
@@ -62,7 +64,9 @@ class AppDimensions {
     dim2: 8,
     dim2_5: 10,
     dim3: 12,
+    dim3_5: 14,
     dim4: 16,
+    dim4_5: 18,
     dim5: 20,
     dim6: 24,
     dim7: 28,
@@ -125,8 +129,14 @@ class AppDimensions {
   /// 12 px.
   final double dim3;
 
+  /// 14 px.
+  final double dim3_5;
+
   /// 16 px.
   final double dim4;
+
+  /// 18 px.
+  final double dim4_5;
 
   /// 20 px.
   final double dim5;
