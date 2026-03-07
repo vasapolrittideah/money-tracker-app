@@ -19,6 +19,7 @@ class AppTextInput extends HookWidget {
     this.disabled = false,
     this.readOnly = false,
     this.obscureText = false,
+    this.required = true,
     this.prefixIcon,
     this.suffixIcon,
     this.keyboardType,
@@ -37,6 +38,7 @@ class AppTextInput extends HookWidget {
   final bool disabled;
   final bool readOnly;
   final bool obscureText;
+  final bool required;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final TextInputType? keyboardType;
@@ -71,6 +73,8 @@ class AppTextInput extends HookWidget {
       _ when disabled => context.colors.textSoft400,
       _ => context.colors.textStrong950,
     };
+
+    final String effectiveLabel = !required ? '$label (ไม่บังคับ)' : label;
 
     final ValidatorFunction? composedValidator = validators != null
         ? (String? value) {
@@ -127,7 +131,7 @@ class AppTextInput extends HookWidget {
                     focusedErrorBorder: InputBorder.none,
                     errorText: null, // Disable default error text to use custom error display.
                     errorStyle: const TextStyle(fontSize: 0),
-                    labelText: label,
+                    labelText: effectiveLabel,
                     labelStyle: context.typography.textBase.copyWith(color: effectiveLabelColor),
                     hintText: hint,
                     hintStyle: context.typography.textBase.copyWith(color: context.colors.textSoft400),
