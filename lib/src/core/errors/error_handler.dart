@@ -4,13 +4,19 @@ import 'package:dio/dio.dart';
 import 'package:money_tracker/src/core/errors/api_response.dart';
 import 'package:money_tracker/src/core/errors/app_exception.dart';
 
+/// Centralises error handling by converting raw exceptions into typed [AppException] subclasses.
+///
+/// All network calls should route their caught errors through [handle] so that
+/// the rest of the app only ever deals with [AppException] values.
 class ErrorHandler {
+  /// Converts any [error] thrown during a network call into a typed [AppException].
   static AppException handle(Object error) => switch (error) {
     DioException e => _handleDioError(e),
     AppException e => e,
     _ => ServerException('Unexpected error occurred'),
   };
 
+  /// Maps a [DioException] to an [AppException] based on its [DioExceptionType].
   static AppException _handleDioError(DioException error) => switch (error.type) {
     DioExceptionType.connectionTimeout ||
     DioExceptionType.receiveTimeout => const NetworkException('Connection timed out'),
@@ -22,6 +28,10 @@ class ErrorHandler {
     _ => ServerException(error.message ?? 'Unexpected error occurred', statusCode: error.response?.statusCode),
   };
 
+  /// Handles an HTTP error [response] by attempting to parse the server's error payload.
+  ///
+  /// If an [ApiError] can be extracted from the response body, it is mapped via
+  /// [mapApiError]. Otherwise a generic [ServerException] is returned.
   static AppException _handleHttpError(Response? response) {
     final apiError = _extractApiError(response);
 
@@ -32,6 +42,10 @@ class ErrorHandler {
     return mapApiError(apiError);
   }
 
+  /// Attempts to parse an [ApiError] from the `error` key in the response body.
+  ///
+  /// Returns `null` if the response is missing, malformed, or does not contain
+  /// an `error` object.
   static ApiError? _extractApiError(Response? response) {
     try {
       final data = response?.data as Map<String, dynamic>?;
@@ -42,6 +56,7 @@ class ErrorHandler {
     }
   }
 
+  /// Maps a parsed [ApiError] to the corresponding typed [AppException].
   static AppException mapApiError(ApiError error) => switch (error.statusCode) {
     HttpStatus.unauthorized => UnauthorizedException(error.message),
     HttpStatus.forbidden => ForbiddenException(error.message),
