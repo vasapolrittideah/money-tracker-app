@@ -49,3 +49,5 @@ app.*.map.json
 
 # Flutter generated files
 gen/
+*.g.dart
+*.freezed.dart
