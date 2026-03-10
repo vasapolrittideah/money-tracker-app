@@ -9,11 +9,11 @@ class AuthRepositoryImpl extends BaseRepository implements AuthRepository {
   final ApiClient _client;
 
   @override
-  Future<Result<void>> register(Register request) =>
+  Future<Result<Session>> register(Register request) =>
       execute(() => _client.dio.post('/auth/register', data: request.toJson()), fromJson: Session.fromJson);
 
   @override
-  Future<Result<void>> loginWithEmail(LoginWithEmail request) =>
+  Future<Result<Session>> loginWithEmail(LoginWithEmail request) =>
       execute(() => _client.dio.post('/auth/login/email', data: request.toJson()), fromJson: Session.fromJson);
 
   @override
