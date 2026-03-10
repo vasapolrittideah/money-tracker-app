@@ -3,22 +3,35 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:money_tracker/src/core/theme/theme_provider.dart';
 import 'package:money_tracker/src/core/widgets/buttons/button.dart';
+import 'package:money_tracker/src/core/widgets/feedback/snackbar.dart';
 import 'package:money_tracker/src/core/widgets/inputs/text_input.dart';
+import 'package:money_tracker/src/features/auth/models/login_with_email/login_with_email.dart';
+import 'package:money_tracker/src/features/auth/viewmodels/auth/auth_viewmodel.dart';
 
 final _formKey = GlobalKey<FormBuilderState>();
 final _emailTextInputKey = 'email';
 final _passwordTextInputKey = 'password';
 
-class LoginWithEmailForm extends HookWidget {
+class LoginWithEmailForm extends HookConsumerWidget {
   const LoginWithEmailForm({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final emailFocusNode = useFocusNode();
     final passwordFocusNode = useFocusNode();
     final passwordHasError = useState(false);
+    final authState = ref.watch(authViewModelProvider);
+
+    ref.listen(authViewModelProvider, (previous, next) {
+      next.whenOrNull(
+        error: (error) {
+          AppSnackbar.show(context, error.message, type: SnackbarType.error);
+        },
+      );
+    });
 
     return FormBuilder(
       key: _formKey,
@@ -73,10 +86,15 @@ class LoginWithEmailForm extends HookWidget {
           AppButton(
             text: 'เข้าสู่ระบบ',
             loadingText: 'กำลังเข้าสู่ระบบ...',
+            loading: authState.maybeWhen(loading: () => true, orElse: () => false),
             onPressed: () {
               if (_formKey.currentState?.saveAndValidate() ?? false) {
                 final formData = _formKey.currentState?.value;
-                print('Form Data: $formData');
+                final request = LoginWithEmail(
+                  email: formData?[_emailTextInputKey] as String,
+                  password: formData?[_passwordTextInputKey] as String,
+                );
+                ref.read(authViewModelProvider.notifier).loginWithEmail(request);
               }
             },
           ),
