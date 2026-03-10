@@ -1,4 +1,4 @@
-part of 'auth_viewmodel.dart';
+part of 'auth_notifier.dart';
 
 @freezed
 abstract class AuthState with _$AuthState {

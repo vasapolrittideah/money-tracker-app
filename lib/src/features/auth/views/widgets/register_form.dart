@@ -9,7 +9,7 @@ import 'package:money_tracker/src/core/widgets/buttons/button.dart';
 import 'package:money_tracker/src/core/widgets/feedback/snackbar.dart';
 import 'package:money_tracker/src/core/widgets/inputs/text_input.dart';
 import 'package:money_tracker/src/features/auth/models/register/register.dart';
-import 'package:money_tracker/src/features/auth/viewmodels/auth/auth_viewmodel.dart';
+import 'package:money_tracker/src/features/auth/viewmodels/auth/auth_notifier.dart';
 import 'package:remixicon/remixicon.dart';
 
 final _formKey = GlobalKey<FormBuilderState>();
@@ -27,7 +27,7 @@ class RegisterForm extends HookConsumerWidget {
     final nameFocusNode = useFocusNode();
     final passwordHasError = useState(false);
 
-    ref.listen(authViewModelProvider, (previous, next) {
+    ref.listen(authProvider, (previous, next) {
       next.whenOrNull(
         error: (error) {
           AppSnackbar.show(context, error.message, type: SnackbarType.error);
@@ -118,7 +118,7 @@ class RegisterForm extends HookConsumerWidget {
                   email: formData?[_emailTextInputKey] as String,
                   password: formData?[_passwordTextInputKey] as String,
                 );
-                ref.read(authViewModelProvider.notifier).register(request);
+                ref.read(authProvider.notifier).register(request);
               }
             },
           ),

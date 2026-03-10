@@ -9,7 +9,7 @@ import 'package:money_tracker/src/core/widgets/buttons/button.dart';
 import 'package:money_tracker/src/core/widgets/feedback/snackbar.dart';
 import 'package:money_tracker/src/core/widgets/inputs/text_input.dart';
 import 'package:money_tracker/src/features/auth/models/login_with_email/login_with_email.dart';
-import 'package:money_tracker/src/features/auth/viewmodels/auth/auth_viewmodel.dart';
+import 'package:money_tracker/src/features/auth/viewmodels/auth/auth_notifier.dart';
 
 final _formKey = GlobalKey<FormBuilderState>();
 final _emailTextInputKey = 'email';
@@ -23,9 +23,9 @@ class LoginWithEmailForm extends HookConsumerWidget {
     final emailFocusNode = useFocusNode();
     final passwordFocusNode = useFocusNode();
     final passwordHasError = useState(false);
-    final authState = ref.watch(authViewModelProvider);
+    final authState = ref.watch(authProvider);
 
-    ref.listen(authViewModelProvider, (previous, next) {
+    ref.listen(authProvider, (previous, next) {
       next.whenOrNull(
         error: (error) {
           AppSnackbar.show(context, error.message, type: SnackbarType.error);
@@ -94,7 +94,7 @@ class LoginWithEmailForm extends HookConsumerWidget {
                   email: formData?[_emailTextInputKey] as String,
                   password: formData?[_passwordTextInputKey] as String,
                 );
-                ref.read(authViewModelProvider.notifier).loginWithEmail(request);
+                ref.read(authProvider.notifier).loginWithEmail(request);
               }
             },
           ),

@@ -8,11 +8,11 @@ import 'package:money_tracker/src/features/auth/repositories/auth/auth_repositor
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'auth_state.dart';
-part 'auth_viewmodel.freezed.dart';
-part 'auth_viewmodel.g.dart';
+part 'auth_notifier.freezed.dart';
+part 'auth_notifier.g.dart';
 
 @riverpod
-class AuthViewModel extends _$AuthViewModel {
+class AuthNotifier extends _$AuthNotifier {
   @override
   AuthState build() => const AuthState.initial();
 
