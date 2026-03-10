@@ -6,7 +6,7 @@ part 'session.g.dart';
 
 @Freezed(toJson: false)
 abstract class Session with _$Session {
-  const factory Session({required String email, required String password}) = _Session;
+  const factory Session({required String accessToken, required String refreshToken}) = _Session;
 
   factory Session.fromJson(Map<String, dynamic> json) => _$SessionFromJson(json);
 }
