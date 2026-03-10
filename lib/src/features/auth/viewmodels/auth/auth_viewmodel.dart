@@ -1,0 +1,39 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:money_tracker/src/core/errors/app_exception.dart';
+import 'package:money_tracker/src/core/errors/result.dart';
+import 'package:money_tracker/src/features/auth/models/login_with_email/login_with_email.dart';
+import 'package:money_tracker/src/features/auth/models/register/register.dart';
+import 'package:money_tracker/src/features/auth/repositories/auth/auth_repository.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+part 'auth_state.dart';
+part 'auth_viewmodel.freezed.dart';
+part 'auth_viewmodel.g.dart';
+
+@riverpod
+class AuthViewModel extends _$AuthViewModel {
+  @override
+  AuthState build() => const AuthState.initial();
+
+  Future<void> loginWithEmail(LoginWithEmail request) async {
+    state = const AuthState.loading();
+
+    final result = await ref.read(authRepositoryProvider).loginWithEmail(request);
+
+    result.when(
+      success: (data) => state = const AuthState.authenticated(),
+      failure: (error) => state = AuthState.error(error),
+    );
+  }
+
+  Future<void> register(Register request) async {
+    state = const AuthState.loading();
+
+    final result = await ref.read(authRepositoryProvider).register(request);
+
+    result.when(
+      success: (data) => state = const AuthState.authenticated(),
+      failure: (error) => state = AuthState.error(error),
+    );
+  }
+}
