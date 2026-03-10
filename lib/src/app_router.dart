@@ -28,7 +28,14 @@ class AppRouter {
     initialLocation: splash,
     refreshListenable: _RouterNotifier(container),
     redirect: (context, state) {
-      // TODO: Implement auth-based redirection logic here.
+      final session = container.read(sessionProvider).value;
+      final isAuthenticated = session != null;
+      final isAuthRoute = [splash, selectLoginMethod, loginWithEmail, register].contains(state.matchedLocation);
+
+      if (isAuthenticated && isAuthRoute) return '/home'; // TODO: replace with actual home route when implemented
+      if (!isAuthenticated && !isAuthRoute) return selectLoginMethod;
+
+      return null;
     },
     routes: [
       // Root route — always the first screen shown on launch.
