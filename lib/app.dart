@@ -3,9 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:money_tracker/src/app_router.dart';
 import 'package:money_tracker/src/core/theme/theme.dart';
 import 'package:money_tracker/src/core/theme/theme_provider.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 class MoneyTrackerApp extends StatelessWidget {
-  const MoneyTrackerApp({super.key});
+  const MoneyTrackerApp({super.key, required this.container});
+
+  final ProviderContainer container;
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +22,8 @@ class MoneyTrackerApp extends StatelessWidget {
           theme: AppTheme.light,
           child: MaterialApp.router(
             key: const Key('MoneyTrackerApp'),
+            routerConfig: AppRouter.router(container),
             debugShowCheckedModeBanner: false,
-            routerDelegate: AppRouter.router.routerDelegate,
-            routeInformationParser: AppRouter.router.routeInformationParser,
-            routeInformationProvider: AppRouter.router.routeInformationProvider,
             theme: ThemeData(scaffoldBackgroundColor: Colors.transparent, splashFactory: NoSplash.splashFactory),
             builder: (context, child) => child ?? const SizedBox.shrink(),
           ),

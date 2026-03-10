@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:money_tracker/src/core/session/session_notifier.dart';
 import 'package:money_tracker/src/core/utils/transition_util.dart';
 import 'package:money_tracker/src/features/auth/views/login_with_email_screen.dart';
 import 'package:money_tracker/src/features/auth/views/register_screen.dart';
 import 'package:money_tracker/src/features/auth/views/select_login_method_screen.dart';
 import 'package:money_tracker/src/features/splash/views/splash_screen.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 /// Centralized routing configuration for the app using [GoRouter].
 ///
@@ -22,8 +24,12 @@ class AppRouter {
   /// The single [GoRouter] instance shared across the entire app.
   ///
   /// Pass this to [MaterialApp.router] via `routerConfig: AppRouter.router`.
-  static final GoRouter router = GoRouter(
+  static GoRouter router(ProviderContainer container) => GoRouter(
     initialLocation: splash,
+    refreshListenable: _RouterNotifier(container),
+    redirect: (context, state) {
+      // TODO: Implement auth-based redirection logic here.
+    },
     routes: [
       // Root route — always the first screen shown on launch.
       GoRoute(
@@ -53,4 +59,10 @@ class AppRouter {
       ),
     ],
   );
+}
+
+class _RouterNotifier extends ChangeNotifier {
+  _RouterNotifier(ProviderContainer container) {
+    container.listen(sessionProvider, (_, _) => notifyListeners());
+  }
 }

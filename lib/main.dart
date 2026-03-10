@@ -25,10 +25,11 @@ Future<void> main() async {
       await _initializeServices();
       await _configureSystemUI();
 
+      final container = ProviderContainer(overrides: [appConfigProvider.overrideWithValue(await AppConfig.fromEnv())]);
       runApp(
-        ProviderScope(
-          overrides: [appConfigProvider.overrideWithValue(await AppConfig.fromEnv())],
-          child: MoneyTrackerApp(),
+        UncontrolledProviderScope(
+          container: container,
+          child: MoneyTrackerApp(container: container),
         ),
       );
     },
