@@ -4,7 +4,9 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:money_tracker/app.dart';
+import 'package:money_tracker/src/core/config/app_config.dart';
 
 /// Tracks errors that have already been reported to avoid duplicate logging.
 final _reportedErrors = Expando<bool>('reportedErrors');
@@ -23,7 +25,12 @@ Future<void> main() async {
       await _initializeServices();
       await _configureSystemUI();
 
-      runApp(MoneyTrackerApp());
+      runApp(
+        ProviderScope(
+          overrides: [appConfigProvider.overrideWithValue(await AppConfig.fromEnv())],
+          child: MoneyTrackerApp(),
+        ),
+      );
     },
     (error, stackTrace) {
       _handleError(error, stackTrace, context: 'Uncaught error');
