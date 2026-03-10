@@ -5,7 +5,10 @@ import 'package:money_tracker/src/core/errors/error_handler.dart';
 import 'package:money_tracker/src/core/errors/result.dart';
 
 abstract class BaseRepository {
-  Future<Result<T>> execute<T>(Future<Response> Function() call, {T Function(Object? json)? fromJson}) async {
+  Future<Result<T>> execute<T>(
+    Future<Response> Function() call, {
+    T Function(Map<String, dynamic> json)? fromJson,
+  }) async {
     try {
       final response = await call();
 

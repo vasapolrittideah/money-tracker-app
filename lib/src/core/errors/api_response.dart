@@ -16,11 +16,12 @@ class ApiResponse<T> {
   ///
   /// [fromJsonT] is used to deserialize the nested [data] field into type [T].
   /// If [fromJsonT] is `null` or the `data` key is absent, [data] will be `null`.
-  factory ApiResponse.fromJson(Map<String, dynamic> json, T Function(Object? json)? fromJsonT) => ApiResponse(
-    data: json['data'] != null && fromJsonT != null ? fromJsonT(json['data']) : null,
-    error: json['error'] != null ? ApiError.fromJson(json['error'] as Map<String, dynamic>) : null,
-    timestamp: DateTime.parse(json['timestamp'] as String),
-  );
+  factory ApiResponse.fromJson(Map<String, dynamic> json, T Function(Map<String, dynamic> json)? fromJsonT) =>
+      ApiResponse(
+        data: json['data'] != null && fromJsonT != null ? fromJsonT(json['data'] as Map<String, dynamic>) : null,
+        error: json['error'] != null ? ApiError.fromJson(json['error'] as Map<String, dynamic>) : null,
+        timestamp: DateTime.parse(json['timestamp'] as String),
+      );
 
   /// Returns `true` when [data] is present and no [error] was returned.
   bool get isSuccess => data != null && error == null;
