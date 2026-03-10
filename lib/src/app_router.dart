@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:money_tracker/src/core/session/session_notifier.dart';
 import 'package:money_tracker/src/core/utils/transition_util.dart';
+import 'package:money_tracker/src/core/widgets/navigation/navbar.dart';
 import 'package:money_tracker/src/features/auth/views/login_with_email_screen.dart';
 import 'package:money_tracker/src/features/auth/views/register_screen.dart';
 import 'package:money_tracker/src/features/auth/views/select_login_method_screen.dart';
@@ -63,6 +64,37 @@ class AppRouter {
           direction: AxisDirection.left,
           child: const RegisterScreen(),
         ),
+      ),
+      StatefulShellRoute.indexedStack(
+        builder: (context, state, navigationShell) {
+          return AppNavBar(navigationShell: navigationShell);
+        },
+        branches: [
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/home',
+                builder: (context, state) => const Scaffold(body: Center(child: Text('Home Screen'))),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/transactions',
+                builder: (context, state) => const Scaffold(body: Center(child: Text('Transactions Screen'))),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/settings',
+                builder: (context, state) => const Scaffold(body: Center(child: Text('Settings Screen'))),
+              ),
+            ],
+          ),
+        ],
       ),
     ],
   );
