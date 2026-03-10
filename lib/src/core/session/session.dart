@@ -4,7 +4,7 @@ part 'session.freezed.dart';
 
 part 'session.g.dart';
 
-@Freezed(toJson: false)
+@freezed
 abstract class Session with _$Session {
   const factory Session({required String accessToken, required String refreshToken}) = _Session;
 
