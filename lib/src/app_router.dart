@@ -3,10 +3,10 @@ import 'package:go_router/go_router.dart';
 import 'package:money_tracker/src/core/session/session_notifier.dart';
 import 'package:money_tracker/src/core/utils/transition_util.dart';
 import 'package:money_tracker/src/core/widgets/navigation/navbar.dart';
-import 'package:money_tracker/src/features/auth/views/login_with_email_screen.dart';
-import 'package:money_tracker/src/features/auth/views/register_screen.dart';
-import 'package:money_tracker/src/features/auth/views/select_login_method_screen.dart';
-import 'package:money_tracker/src/features/splash/views/splash_screen.dart';
+import 'package:money_tracker/src/features/auth/views/login_with_email_page.dart';
+import 'package:money_tracker/src/features/auth/views/register_page.dart';
+import 'package:money_tracker/src/features/auth/views/select_login_method_page.dart';
+import 'package:money_tracker/src/features/splash/views/splash_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 /// Centralized routing configuration for the app using [GoRouter].
@@ -39,22 +39,22 @@ class AppRouter {
       return null;
     },
     routes: [
-      // Root route — always the first screen shown on launch.
+      // Root route — always the first page shown on launch.
       GoRoute(
         path: splash,
-        pageBuilder: (context, state) => TransitionUtil.slideTransitionPage(state: state, child: const SplashScreen()),
+        pageBuilder: (context, state) => TransitionUtil.slideTransitionPage(state: state, child: const SplashPage()),
       ),
       GoRoute(
         path: selectLoginMethod,
         pageBuilder: (context, state) =>
-            TransitionUtil.slideTransitionPage(state: state, child: const SelectLoginMethodScreen()),
+            TransitionUtil.slideTransitionPage(state: state, child: const SelectLoginMethodPage()),
       ),
       GoRoute(
         path: loginWithEmail,
         pageBuilder: (context, state) => TransitionUtil.slideTransitionPage(
           state: state,
           direction: AxisDirection.left,
-          child: const LoginWithEmailScreen(),
+          child: const LoginWithEmailPage(),
         ),
       ),
       GoRoute(
@@ -62,7 +62,7 @@ class AppRouter {
         pageBuilder: (context, state) => TransitionUtil.slideTransitionPage(
           state: state,
           direction: AxisDirection.left,
-          child: const RegisterScreen(),
+          child: const RegisterPage(),
         ),
       ),
       StatefulShellRoute.indexedStack(

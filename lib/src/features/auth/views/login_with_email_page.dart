@@ -5,16 +5,16 @@ import 'package:money_tracker/src/app_router.dart';
 import 'package:money_tracker/src/core/theme/theme_provider.dart';
 import 'package:money_tracker/src/core/widgets/buttons/button.dart';
 import 'package:money_tracker/src/core/widgets/layout/header.dart';
-import 'package:money_tracker/src/features/auth/views/widgets/register_form.dart';
+import 'package:money_tracker/src/features/auth/views/widgets/login_with_email_form.dart';
 
-class RegisterScreen extends StatelessWidget {
-  const RegisterScreen({super.key});
+class LoginWithEmailPage extends StatelessWidget {
+  const LoginWithEmailPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: context.colors.bgWhite0,
-      appBar: AppHeader(title: 'สมัครสมาชิก'),
+      appBar: AppHeader(title: 'เข้าสู่ระบบด้วยอีเมล'),
       body: SafeArea(
         child: Column(
           children: [
@@ -27,17 +27,17 @@ class RegisterScreen extends StatelessWidget {
                   context.dimensions.dim4.w,
                   0,
                 ),
-                child: Column(mainAxisSize: MainAxisSize.min, children: [RegisterForm()]),
+                child: Column(mainAxisSize: MainAxisSize.min, children: [LoginWithEmailForm()]),
               ),
             ),
             Padding(
               padding: EdgeInsets.only(top: context.dimensions.dim8.h),
               child: AppButton(
-                text: 'มีบัญชีอยู่แล้ว? เข้าสู่ระบบ',
+                text: 'ยังไม่ได้เป็นสมาชิก? สมัครเลย',
                 variant: ButtonVariant.text,
                 size: ButtonSize.xsmall,
                 onPressed: () {
-                  context.pushReplacement(AppRouter.loginWithEmail);
+                  context.pushReplacement(AppRouter.register);
                 },
               ),
             ),

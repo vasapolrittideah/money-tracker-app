@@ -7,8 +7,8 @@ import 'package:money_tracker/src/core/gen/assets.gen.dart';
 import 'package:money_tracker/src/core/theme/theme_provider.dart';
 import 'package:money_tracker/src/core/widgets/feedback/loading_indicator.dart';
 
-class SplashScreen extends HookWidget {
-  const SplashScreen({super.key});
+class SplashPage extends HookWidget {
+  const SplashPage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -8,8 +8,8 @@ import 'package:money_tracker/src/core/widgets/buttons/button.dart';
 import 'package:money_tracker/src/features/auth/views/widgets/login_method_button.dart';
 import 'package:remixicon/remixicon.dart';
 
-class SelectLoginMethodScreen extends StatelessWidget {
-  const SelectLoginMethodScreen({super.key});
+class SelectLoginMethodPage extends StatelessWidget {
+  const SelectLoginMethodPage({super.key});
 
   @override
   Widget build(BuildContext context) {
