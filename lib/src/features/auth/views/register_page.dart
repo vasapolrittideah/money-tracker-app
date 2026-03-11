@@ -14,34 +14,54 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: context.colors.bgWhite0,
-      appBar: AppHeader(title: 'สมัครสมาชิก'),
+      appBar: AppHeader(showLogo: true),
       body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              child: SingleChildScrollView(
-                keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-                padding: EdgeInsets.fromLTRB(
-                  context.dimensions.dim4.w,
-                  context.dimensions.dim8.h,
-                  context.dimensions.dim4.w,
-                  0,
+        child: SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          padding: EdgeInsets.fromLTRB(
+            context.dimensions.dim4.w,
+            context.dimensions.dim8.h,
+            context.dimensions.dim4.w,
+            0,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'สมัครสมาชิก',
+                style: context.typography.textDisplay.copyWith(
+                  color: context.colors.textStrong950,
+                  fontWeight: FontWeight.bold,
                 ),
-                child: Column(mainAxisSize: MainAxisSize.min, children: [RegisterForm()]),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: context.dimensions.dim8.h),
-              child: AppButton(
-                text: 'มีบัญชีอยู่แล้ว? เข้าสู่ระบบ',
-                variant: ButtonVariant.text,
-                size: ButtonSize.xsmall,
-                onPressed: () {
-                  context.pushReplacement(AppRouter.loginWithEmail);
-                },
+              SizedBox(height: context.dimensions.dim4.h),
+              Text(
+                'กรอกข้อมูลของคุณเพื่อสร้างบัญชีใหม่',
+                style: context.typography.textBase.copyWith(color: context.colors.textSub600),
+                textAlign: TextAlign.start,
               ),
-            ),
-          ],
+              SizedBox(height: context.dimensions.dim10.h),
+              RegisterForm(),
+              SizedBox(height: context.dimensions.dim6.h),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'มีบัญชีอยู่แล้ว? ',
+                    style: context.typography.textBase.copyWith(color: context.colors.textSub600),
+                  ),
+                  AppButton(
+                    text: 'เข้าสู่ระบบ',
+                    variant: ButtonVariant.text,
+                    size: ButtonSize.xsmall,
+                    onPressed: () {
+                      context.pushReplacement(AppRouter.loginWithEmail);
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

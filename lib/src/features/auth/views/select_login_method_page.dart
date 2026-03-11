@@ -59,19 +59,27 @@ class SelectLoginMethodPage extends StatelessWidget {
                         context.push(AppRouter.loginWithEmail);
                       },
                     ),
+                    SizedBox(height: context.dimensions.dim6.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+
+                      children: [
+                        Text(
+                          'ยังไม่ได้เป็นสมาชิก? ',
+                          style: context.typography.textBase.copyWith(color: context.colors.textSub600),
+                        ),
+                        AppButton(
+                          text: 'สมัครเลย',
+                          variant: ButtonVariant.text,
+                          size: ButtonSize.xsmall,
+                          onPressed: () {
+                            context.push(AppRouter.register);
+                          },
+                        ),
+                      ],
+                    ),
                   ],
                 ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: context.dimensions.dim8.h),
-              child: AppButton(
-                text: 'ยังไม่ได้เป็นสมาชิก? สมัครเลย',
-                variant: ButtonVariant.text,
-                size: ButtonSize.xsmall,
-                onPressed: () {
-                  context.push(AppRouter.register);
-                },
               ),
             ),
           ],

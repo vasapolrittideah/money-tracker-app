@@ -14,34 +14,54 @@ class LoginWithEmailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: context.colors.bgWhite0,
-      appBar: AppHeader(title: 'เข้าสู่ระบบด้วยอีเมล'),
+      appBar: AppHeader(showLogo: true),
       body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              child: SingleChildScrollView(
-                keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-                padding: EdgeInsets.fromLTRB(
-                  context.dimensions.dim4.w,
-                  context.dimensions.dim8.h,
-                  context.dimensions.dim4.w,
-                  0,
+        child: SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          padding: EdgeInsets.fromLTRB(
+            context.dimensions.dim4.w,
+            context.dimensions.dim8.h,
+            context.dimensions.dim4.w,
+            0,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'เข้าสู่ระบบด้วยอีเมล',
+                style: context.typography.textDisplay.copyWith(
+                  color: context.colors.textStrong950,
+                  fontWeight: FontWeight.bold,
                 ),
-                child: Column(mainAxisSize: MainAxisSize.min, children: [LoginWithEmailForm()]),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: context.dimensions.dim8.h),
-              child: AppButton(
-                text: 'ยังไม่ได้เป็นสมาชิก? สมัครเลย',
-                variant: ButtonVariant.text,
-                size: ButtonSize.xsmall,
-                onPressed: () {
-                  context.pushReplacement(AppRouter.register);
-                },
+              SizedBox(height: context.dimensions.dim4.h),
+              Text(
+                'กรอกอีเมลและรหัสผ่านของคุณเพื่อเข้าสู่ระบบ',
+                style: context.typography.textBase.copyWith(color: context.colors.textSub600),
+                textAlign: TextAlign.start,
               ),
-            ),
-          ],
+              SizedBox(height: context.dimensions.dim10.h),
+              LoginWithEmailForm(),
+              SizedBox(height: context.dimensions.dim6.h),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'ยังไม่ได้เป็นสมาชิก? ',
+                    style: context.typography.textBase.copyWith(color: context.colors.textSub600),
+                  ),
+                  AppButton(
+                    text: 'สมัครเลย',
+                    variant: ButtonVariant.text,
+                    size: ButtonSize.xsmall,
+                    onPressed: () {
+                      context.pushReplacement(AppRouter.register);
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

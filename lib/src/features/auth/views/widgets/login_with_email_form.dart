@@ -74,15 +74,9 @@ class LoginWithEmailForm extends HookConsumerWidget {
               passwordFocusNode.unfocus();
             },
           ),
-          if (!passwordHasError.value) SizedBox(height: context.dimensions.dim2.h),
-          AppButton(
-            text: 'ลืมรหัสผ่าน?',
-            variant: ButtonVariant.text,
-            fullWidth: false,
-            size: ButtonSize.xsmall,
-            onPressed: () {},
-          ),
-          SizedBox(height: context.dimensions.dim1_5.h),
+          if (!passwordHasError.value) SizedBox(height: context.dimensions.dim4.h),
+          AppButton(text: 'ลืมรหัสผ่าน?', variant: ButtonVariant.text, fullWidth: false, onPressed: () {}),
+          SizedBox(height: context.dimensions.dim4.h),
           AppButton(
             text: 'เข้าสู่ระบบ',
             loadingText: 'กำลังเข้าสู่ระบบ...',
