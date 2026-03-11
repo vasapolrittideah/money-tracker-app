@@ -51,6 +51,7 @@ dependencies:
   freezed_annotation: ^3.1.0
   json_annotation: ^4.11.0
   flutter_secure_storage: ^10.0.0
+  pinput: ^6.0.2
 
 dev_dependencies:
   flutter_test:
@@ -104,6 +105,27 @@ flutter:
           weight: 600
         - asset: ./assets/fonts/ibm_plex_sans_thai/IBMPlexSansThai-Bold.ttf
           weight: 700
+
+    - family: geistMono
+      fonts:
+        - asset: ./assets/fonts/geist_mono/GeistMono-Thin.ttf
+          weight: 100
+        - asset: ./assets/fonts/geist_mono/GeistMono-ExtraLight.ttf
+          weight: 200
+        - asset: ./assets/fonts/geist_mono/GeistMono-Light.ttf
+          weight: 300
+        - asset: ./assets/fonts/geist_mono/GeistMono-Regular.ttf
+          weight: 400
+        - asset: ./assets/fonts/geist_mono/GeistMono-Medium.ttf
+          weight: 500
+        - asset: ./assets/fonts/geist_mono/GeistMono-SemiBold.ttf
+          weight: 600
+        - asset: ./assets/fonts/geist_mono/GeistMono-Bold.ttf
+          weight: 700
+        - asset: ./assets/fonts/geist_mono/GeistMono-ExtraBold.ttf
+          weight: 800
+        - asset: ./assets/fonts/geist_mono/GeistMono-Black.ttf
+          weight: 900
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
