@@ -21,14 +21,19 @@ class SplashPage extends HookWidget {
     }, const []);
 
     return Scaffold(
-      backgroundColor: context.colors.bgWhite0,
+      backgroundColor: context.colors.primaryBase,
       body: SafeArea(
         child: Stack(
           children: [
             Center(
-              child: Assets.images.logo.svg(width: context.dimensions.dim24.w, color: context.colors.primaryBase),
+              child: Assets.images.logo.svg(width: context.dimensions.dim24.w, color: context.colors.textWhite0),
             ),
-            Positioned(bottom: context.dimensions.dim10, left: 0, right: 0, child: AppLoadingIndicator()),
+            Positioned(
+              bottom: context.dimensions.dim10,
+              left: 0,
+              right: 0,
+              child: AppLoadingIndicator(color: context.colors.textWhite0),
+            ),
           ],
         ),
       ),
