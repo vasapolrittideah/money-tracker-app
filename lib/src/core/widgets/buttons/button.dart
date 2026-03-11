@@ -38,7 +38,9 @@ class AppButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Color effectiveBackgroundColor = _isInactive
-        ? context.colors.bgSub200
+        ? variant == ButtonVariant.text
+              ? Colors.transparent
+              : context.colors.bgSub200
         : backgroundColor ??
               switch (variant) {
                 ButtonVariant.primary => context.colors.primaryBase,
@@ -62,7 +64,8 @@ class AppButton extends StatelessWidget {
             ButtonVariant.text => Colors.transparent,
           };
 
-    final double effectiveHeight = switch (size) {
+    final double? effectiveHeight = switch (size) {
+      _ when variant == ButtonVariant.text => null,
       ButtonSize.xsmall => context.dimensions.dim8.h,
       ButtonSize.small => context.dimensions.dim10.h,
       ButtonSize.medium => context.dimensions.dim12.h,
@@ -74,7 +77,7 @@ class AppButton extends StatelessWidget {
       onTap: _isInactive ? null : onPressed,
       child: Container(
         height: effectiveHeight,
-        padding: EdgeInsets.symmetric(horizontal: context.dimensions.dim4.w),
+        padding: EdgeInsets.symmetric(horizontal: variant == ButtonVariant.text ? 0 : context.dimensions.dim4.w),
         decoration: BoxDecoration(
           color: effectiveBackgroundColor,
           borderRadius: context.borders.radiusMdAll,
