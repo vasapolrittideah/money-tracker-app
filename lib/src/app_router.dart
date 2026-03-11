@@ -6,6 +6,7 @@ import 'package:money_tracker/src/core/widgets/navigation/navbar.dart';
 import 'package:money_tracker/src/features/auth/views/login_with_email_page.dart';
 import 'package:money_tracker/src/features/auth/views/register_page.dart';
 import 'package:money_tracker/src/features/auth/views/select_login_method_page.dart';
+import 'package:money_tracker/src/features/auth/views/verify_email_page.dart';
 import 'package:money_tracker/src/features/splash/views/splash_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -21,6 +22,7 @@ class AppRouter {
   static const String selectLoginMethod = '/select-login-method';
   static const String loginWithEmail = '/login-with-email';
   static const String register = '/register';
+  static const String verifyEmail = '/verify-email';
 
   /// The single [GoRouter] instance shared across the entire app.
   ///
@@ -31,7 +33,13 @@ class AppRouter {
     redirect: (context, state) {
       final session = container.read(sessionProvider).value;
       final isAuthenticated = session != null;
-      final isAuthRoute = [splash, selectLoginMethod, loginWithEmail, register].contains(state.matchedLocation);
+      final isAuthRoute = [
+        splash,
+        selectLoginMethod,
+        loginWithEmail,
+        register,
+        verifyEmail,
+      ].contains(state.matchedLocation);
 
       if (isAuthenticated && isAuthRoute) return '/home'; // TODO: replace with actual home route when implemented
       if (!isAuthenticated && !isAuthRoute) return selectLoginMethod;
@@ -63,6 +71,14 @@ class AppRouter {
           state: state,
           direction: AxisDirection.left,
           child: const RegisterPage(),
+        ),
+      ),
+      GoRoute(
+        path: verifyEmail,
+        pageBuilder: (context, state) => TransitionUtil.slideTransitionPage(
+          state: state,
+          direction: AxisDirection.left,
+          child: const VerifyEmailPage(),
         ),
       ),
       StatefulShellRoute.indexedStack(
