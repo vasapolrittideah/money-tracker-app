@@ -53,10 +53,7 @@ class LoginWithEmailForm extends HookConsumerWidget {
             autocorrect: false,
             keyboardType: TextInputType.emailAddress,
             focusNode: emailFocusNode,
-            validators: [
-              FormBuilderValidators.required(errorText: 'กรุณากรอกอีเมล'),
-              FormBuilderValidators.email(errorText: 'รูปแบบอีเมลไม่ถูกต้อง'),
-            ],
+            validators: [FormBuilderValidators.required(errorText: 'กรุณากรอกอีเมล')],
             onSubmitted: (_) {
               FocusScope.of(context).requestFocus(passwordFocusNode);
             },
