@@ -26,6 +26,7 @@ class RegisterForm extends HookConsumerWidget {
     final passwordFocusNode = useFocusNode();
     final nameFocusNode = useFocusNode();
     final passwordHasError = useState(false);
+    final authState = ref.watch(authProvider);
 
     ref.listen(authProvider, (previous, next) {
       next.whenOrNull(
@@ -111,6 +112,7 @@ class RegisterForm extends HookConsumerWidget {
           AppButton(
             text: 'สมัครสมาชิก',
             loadingText: 'กำลังสมัครสมาชิก...',
+            loading: authState.maybeWhen(loading: () => true, orElse: () => false),
             onPressed: () {
               if (_formKey.currentState?.saveAndValidate() ?? false) {
                 final formData = _formKey.currentState?.value;
