@@ -49,6 +49,9 @@ class LoginWithEmailForm extends HookConsumerWidget {
             label: 'อีเมล',
             hint: 'กรอกอีเมลของคุณ',
             textInputAction: TextInputAction.next,
+            enableSuggestions: false,
+            autocorrect: false,
+            keyboardType: TextInputType.emailAddress,
             focusNode: emailFocusNode,
             validators: [
               FormBuilderValidators.required(errorText: 'กรุณากรอกอีเมล'),
