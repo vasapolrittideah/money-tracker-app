@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:money_tracker/src/core/session/session_notifier.dart';
 import 'package:money_tracker/src/core/utils/transition_util.dart';
 import 'package:money_tracker/src/core/widgets/navigation/navbar.dart';
+import 'package:money_tracker/src/features/auth/viewmodels/account/account_notifier.dart';
 import 'package:money_tracker/src/features/auth/views/login_with_email_page.dart';
 import 'package:money_tracker/src/features/auth/views/register_page.dart';
 import 'package:money_tracker/src/features/auth/views/select_login_method_page.dart';
@@ -32,6 +33,7 @@ class AppRouter {
     refreshListenable: _RouterNotifier(container),
     redirect: (context, state) {
       final session = container.read(sessionProvider).value;
+      final accountState = container.read(accountProvider);
       final isAuthenticated = session != null;
       final isAuthRoute = [
         splash,
@@ -41,8 +43,17 @@ class AppRouter {
         verifyEmail,
       ].contains(state.matchedLocation);
 
-      if (isAuthenticated && isAuthRoute) return '/home'; // TODO: replace with actual home route when implemented
       if (!isAuthenticated && !isAuthRoute) return selectLoginMethod;
+
+      if (isAuthenticated) {
+        final account = accountState.whenOrNull(loaded: (account) => account);
+        if (account != null && !account.verified && state.matchedLocation != verifyEmail) {
+          return verifyEmail;
+        }
+        if (account != null && account.verified && isAuthRoute) {
+          return '/home'; // TODO: replace with actual home route when implemented
+        }
+      }
 
       return null;
     },
@@ -119,5 +130,6 @@ class AppRouter {
 class _RouterNotifier extends ChangeNotifier {
   _RouterNotifier(ProviderContainer container) {
     container.listen(sessionProvider, (_, _) => notifyListeners());
+    container.listen(accountProvider, (_, _) => notifyListeners());
   }
 }
