@@ -20,6 +20,8 @@ class AppTextInput extends HookWidget {
     this.readOnly = false,
     this.obscureText = false,
     this.required = true,
+    this.autocorrect = true,
+    this.enableSuggestions = true,
     this.prefixIcon,
     this.suffixIcon,
     this.keyboardType,
@@ -39,6 +41,8 @@ class AppTextInput extends HookWidget {
   final bool readOnly;
   final bool obscureText;
   final bool required;
+  final bool autocorrect;
+  final bool enableSuggestions;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final TextInputType? keyboardType;
@@ -113,6 +117,8 @@ class AppTextInput extends HookWidget {
                   keyboardType: keyboardType,
                   controller: textController,
                   focusNode: focusNode,
+                  autocorrect: autocorrect,
+                  enableSuggestions: enableSuggestions,
                   cursorColor: context.colors.textStrong950,
                   cursorErrorColor: context.colors.errorBase,
                   cursorWidth: 1,
