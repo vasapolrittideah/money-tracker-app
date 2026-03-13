@@ -13,19 +13,19 @@ class ErrorHandler {
   static AppException handle(Object error) => switch (error) {
     DioException e => _handleDioError(e),
     AppException e => e,
-    _ => ServerException('Unexpected error occurred'),
+    _ => ServerException('เกิดข้อผิดพลาดที่ไม่คาดคิด'),
   };
 
   /// Maps a [DioException] to an [AppException] based on its [DioExceptionType].
   static AppException _handleDioError(DioException error) => switch (error.type) {
     DioExceptionType.connectionTimeout ||
-    DioExceptionType.receiveTimeout => const NetworkException('Connection timed out'),
+    DioExceptionType.receiveTimeout => const NetworkException('การเชื่อมต่อหมดเวลา'),
 
-    DioExceptionType.connectionError => const NetworkException('No internet connection'),
+    DioExceptionType.connectionError => const NetworkException('ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้'),
 
     DioExceptionType.badResponse => _handleHttpError(error.response),
 
-    _ => ServerException(error.message ?? 'Unexpected error occurred', statusCode: error.response?.statusCode),
+    _ => ServerException(error.message ?? 'เกิดข้อผิดพลาดที่ไม่คาดคิด', statusCode: error.response?.statusCode),
   };
 
   /// Handles an HTTP error [response] by attempting to parse the server's error payload.
