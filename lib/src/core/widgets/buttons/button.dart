@@ -15,6 +15,7 @@ class AppButton extends StatelessWidget {
     this.loading = false,
     this.disabled = false,
     this.loadingText,
+    this.textColor,
     this.backgroundColor,
     this.variant = ButtonVariant.primary,
     this.size = ButtonSize.medium,
@@ -27,6 +28,7 @@ class AppButton extends StatelessWidget {
   final bool disabled;
   final Widget? prefixIcon;
   final String? loadingText;
+  final Color? textColor;
   final Color? backgroundColor;
   final ButtonVariant variant;
   final ButtonSize size;
@@ -50,11 +52,12 @@ class AppButton extends StatelessWidget {
 
     final Color effectiveTextColor = _isInactive
         ? context.colors.textSoft400
-        : switch (variant) {
-            ButtonVariant.primary => Colors.white,
-            ButtonVariant.outlined => context.colors.textStrong950,
-            ButtonVariant.text => context.colors.textStrong950,
-          };
+        : textColor ??
+              switch (variant) {
+                ButtonVariant.primary => Colors.white,
+                ButtonVariant.outlined => context.colors.textStrong950,
+                ButtonVariant.text => context.colors.textStrong950,
+              };
 
     final Color effectiveBorderColor = _isInactive
         ? Colors.transparent
