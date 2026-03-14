@@ -30,7 +30,7 @@ class SplashPage extends HookConsumerWidget {
       // Session still loading — wait
       if (session.isLoading) return null;
 
-      // No session — go to selectLoginMethod and let the router redirect
+      // No session — go to selectLoginMethod
       if (session.value == null) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
           if (context.mounted) context.go(AppRouter.selectLoginMethod);
@@ -39,10 +39,25 @@ class SplashPage extends HookConsumerWidget {
       }
 
       // Session exists but account is still loading — wait
-      final isAccountResolved = accountState.maybeMap(initial: (_) => false, loading: (_) => false, orElse: () => true);
-      if (!isAccountResolved) return null;
+      if (accountState.isLoading) return null;
 
-      // Account resolved — go to selectLoginMethod and let the router redirect to the correct page
+      // Account failed to load — clear session and go to selectLoginMethod
+      if (accountState.hasError) {
+        ref.read(sessionProvider.notifier).clearSession();
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (context.mounted) context.go(AppRouter.selectLoginMethod);
+        });
+        return null;
+      }
+
+      // Account loaded but email not verified — clear session and go to selectLoginMethod
+      final account = accountState.dataOrNull;
+      if (account != null && !account.verified) {
+        ref.read(sessionProvider.notifier).clearSession();
+      }
+
+      // Account loaded and email verified — go to selectLoginMethod and let
+      // the router redirect to the correct page
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (context.mounted) context.go(AppRouter.selectLoginMethod);
       });
