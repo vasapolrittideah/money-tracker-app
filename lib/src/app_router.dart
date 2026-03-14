@@ -35,6 +35,7 @@ class AppRouter {
       final session = container.read(sessionProvider).value;
       final accountState = container.read(accountProvider);
       final isAuthenticated = session != null;
+      final isInitialRoute = state.matchedLocation == splash;
       final isAuthRoute = [
         splash,
         selectLoginMethod,
@@ -46,12 +47,11 @@ class AppRouter {
       if (!isAuthenticated && !isAuthRoute) return selectLoginMethod;
 
       if (isAuthenticated) {
-        final account = accountState.whenOrNull(loaded: (account) => account);
-        if (account != null && !account.verified && state.matchedLocation != verifyEmail) {
-          return verifyEmail;
-        }
-        if (account != null && account.verified && isAuthRoute) {
-          return '/home'; // TODO: replace with actual home route when implemented
+        final account = accountState.dataOrNull;
+        if (account != null && isAuthRoute && !isInitialRoute) {
+          return account.verified
+              ? '/home' // TODO: replace with actual home route when implemented
+              : verifyEmail;
         }
       }
 
