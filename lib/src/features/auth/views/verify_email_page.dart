@@ -8,7 +8,7 @@ import 'package:money_tracker/src/core/widgets/feedback/alert_dialog.dart';
 import 'package:money_tracker/src/core/widgets/feedback/loading_indicator.dart';
 import 'package:money_tracker/src/core/widgets/layout/header.dart';
 import 'package:money_tracker/src/core/widgets/overlays/dialog.dart';
-import 'package:money_tracker/src/features/auth/viewmodels/account/account_notifier.dart';
+import 'package:money_tracker/src/features/account/viewmodels/account/account_notifier.dart';
 import 'package:money_tracker/src/features/auth/viewmodels/email_verification/email_verification_notifier.dart';
 import 'package:money_tracker/src/features/auth/views/widgets/verify_email_form.dart';
 import 'package:remixicon/remixicon.dart';
@@ -35,6 +35,9 @@ class VerifyEmailPage extends HookConsumerWidget {
     useEffect(() {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         accountState.whenOrNull(
+          data: (account) {
+            ref.read(emailVerificationProvider.notifier).sendVerificationEmail();
+          },
           error: (error) {
             AppDialog.show(
               context: context,
@@ -55,6 +58,25 @@ class VerifyEmailPage extends HookConsumerWidget {
       return null;
     }, [accountState]);
 
+    ref.listen(emailVerificationProvider, (previous, next) {
+      next.whenOrNull(
+        error: (error) {
+          AppDialog.show(
+            context: context,
+            child: AppAlertDialog(
+              title: 'เกิดข้อผิดพลาด',
+              message: error.message,
+              buttonText: 'ลองใหม่อีกครั้ง',
+              type: AlertDialogType.error,
+              onButtonPressed: () {
+                ref.read(emailVerificationProvider.notifier).sendVerificationEmail();
+              },
+            ),
+          );
+        },
+      );
+    });
+
     return Scaffold(
       backgroundColor: context.colors.bgWhite0,
       appBar: AppHeader(showLogo: true),
@@ -62,8 +84,8 @@ class VerifyEmailPage extends HookConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            accountState.maybeMap(
-              loaded: (value) => SingleChildScrollView(
+            accountState.maybeWhen(
+              data: (account) => SingleChildScrollView(
                 keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
                 padding: EdgeInsets.fromLTRB(
                   context.dimensions.dim4.w,
@@ -92,7 +114,7 @@ class VerifyEmailPage extends HookConsumerWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          value.account.email,
+                          account.email,
                           style: context.typography.textBase.copyWith(
                             color: context.colors.textStrong950,
                             fontWeight: FontWeight.w500,
