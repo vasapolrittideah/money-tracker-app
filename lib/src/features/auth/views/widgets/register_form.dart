@@ -39,9 +39,7 @@ class RegisterForm extends HookConsumerWidget {
     return FormBuilder(
       key: _formKey,
       onChanged: () {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          passwordHasError.value = _formKey.currentState?.fields[_passwordTextInputKey]?.hasError ?? false;
-        });
+        passwordHasError.value = _formKey.currentState?.fields[_passwordTextInputKey]?.hasError ?? false;
       },
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -115,15 +113,15 @@ class RegisterForm extends HookConsumerWidget {
           AppButton(
             text: 'สมัครสมาชิก',
             loadingText: 'กำลังสมัครสมาชิก...',
-            loading: authState.maybeWhen(loading: () => true, orElse: () => false),
-            onPressed: () {
+            loading: authState.isLoading,
+            onPressed: () async {
               if (_formKey.currentState?.saveAndValidate() ?? false) {
                 final formData = _formKey.currentState?.value;
                 final request = Register(
                   email: formData?[_emailTextInputKey] as String,
                   password: formData?[_passwordTextInputKey] as String,
                 );
-                ref.read(authProvider.notifier).register(request);
+                await ref.read(authProvider.notifier).register(request);
               }
             },
           ),

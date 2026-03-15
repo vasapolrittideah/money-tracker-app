@@ -36,9 +36,7 @@ class LoginWithEmailForm extends HookConsumerWidget {
     return FormBuilder(
       key: _formKey,
       onChanged: () {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          passwordHasError.value = _formKey.currentState?.fields[_passwordTextInputKey]?.hasError ?? false;
-        });
+        passwordHasError.value = _formKey.currentState?.fields[_passwordTextInputKey]?.hasError ?? false;
       },
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -80,7 +78,7 @@ class LoginWithEmailForm extends HookConsumerWidget {
           AppButton(
             text: 'เข้าสู่ระบบ',
             loadingText: 'กำลังเข้าสู่ระบบ...',
-            loading: authState.maybeWhen(loading: () => true, orElse: () => false),
+            loading: authState.isLoading,
             onPressed: () {
               if (_formKey.currentState?.saveAndValidate() ?? false) {
                 final formData = _formKey.currentState?.value;
