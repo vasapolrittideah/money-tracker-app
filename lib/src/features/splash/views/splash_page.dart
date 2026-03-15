@@ -8,7 +8,7 @@ import 'package:money_tracker/src/core/gen/assets.gen.dart';
 import 'package:money_tracker/src/core/session/session_notifier.dart';
 import 'package:money_tracker/src/core/theme/theme_provider.dart';
 import 'package:money_tracker/src/core/widgets/feedback/loading_indicator.dart';
-import 'package:money_tracker/src/features/auth/viewmodels/account/account_notifier.dart';
+import 'package:money_tracker/src/features/account/viewmodels/account/account_notifier.dart';
 
 class SplashPage extends HookConsumerWidget {
   const SplashPage({super.key});
