@@ -11,9 +11,6 @@ part 'auth_repository.g.dart';
 part 'auth_repository_impl.dart';
 
 /// Contract for authentication operations.
-///
-/// Implementations are responsible for communicating with the auth API and
-/// returning a typed [Result] so callers never need to catch exceptions directly.
 abstract interface class AuthRepository {
   /// Creates a new user account using the provided [request] details.
   Future<Result<Session>> register(Register request);
