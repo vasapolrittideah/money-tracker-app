@@ -9,7 +9,7 @@ import 'package:money_tracker/src/core/widgets/buttons/button.dart';
 import 'package:money_tracker/src/core/widgets/feedback/snackbar.dart';
 import 'package:money_tracker/src/core/widgets/inputs/text_input.dart';
 import 'package:money_tracker/src/features/auth/models/login_with_email.dart';
-import 'package:money_tracker/src/features/auth/viewmodels/auth_notifier.dart';
+import 'package:money_tracker/src/features/auth/notifiers/auth_notifier.dart';
 
 final _formKey = GlobalKey<FormBuilderState>();
 final _emailTextInputKey = 'email';
