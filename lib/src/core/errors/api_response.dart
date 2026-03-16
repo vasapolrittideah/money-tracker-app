@@ -23,8 +23,8 @@ class ApiResponse<T> {
         timestamp: DateTime.parse(json['timestamp'] as String),
       );
 
-  /// Returns `true` when [data] is present and no [error] was returned.
-  bool get isSuccess => data != null && error == null;
+  /// Returns `true` when no error was returned by the server.
+  bool get isSuccess => error == null;
 
   /// Returns `true` when the server returned an [error].
   bool get isError => error != null;
