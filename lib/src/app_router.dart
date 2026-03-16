@@ -8,6 +8,7 @@ import 'package:money_tracker/src/features/auth/views/login_with_email_page.dart
 import 'package:money_tracker/src/features/auth/views/register_page.dart';
 import 'package:money_tracker/src/features/auth/views/select_login_method_page.dart';
 import 'package:money_tracker/src/features/auth/views/verify_email_page.dart';
+import 'package:money_tracker/src/features/splash/viewmodels/splash_notifier.dart';
 import 'package:money_tracker/src/features/splash/views/splash_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -32,23 +33,25 @@ class AppRouter {
     initialLocation: splash,
     refreshListenable: _RouterNotifier(container),
     redirect: (context, state) {
+      debugPrint('GoRouter redirect: ${state.matchedLocation}');
+
+      final splashDone = container.read(splashProvider);
+      if (!splashDone) {
+        return state.matchedLocation == splash ? null : splash;
+      }
+
       final session = container.read(sessionProvider).value;
       final accountState = container.read(accountProvider);
       final isAuthenticated = session != null;
-      final isInitialRoute = state.matchedLocation == splash;
-      final isAuthRoute = [
-        splash,
-        selectLoginMethod,
-        loginWithEmail,
-        register,
-        verifyEmail,
-      ].contains(state.matchedLocation);
+      final isAuthRoute = [selectLoginMethod, loginWithEmail, register, verifyEmail].contains(state.matchedLocation);
 
-      if (!isAuthenticated && !isAuthRoute) return selectLoginMethod;
+      if (!isAuthenticated && !isAuthRoute) {
+        return selectLoginMethod;
+      }
 
       if (isAuthenticated) {
         final account = accountState.dataOrNull;
-        if (account != null && isAuthRoute && !isInitialRoute) {
+        if (account != null && isAuthRoute) {
           return account.verified
               ? '/home' // TODO: replace with actual home route when implemented
               : verifyEmail;
@@ -129,6 +132,7 @@ class AppRouter {
 
 class _RouterNotifier extends ChangeNotifier {
   _RouterNotifier(ProviderContainer container) {
+    container.listen(splashProvider, (_, _) => notifyListeners());
     container.listen(sessionProvider, (_, _) => notifyListeners());
     container.listen(accountProvider, (_, _) => notifyListeners());
   }
