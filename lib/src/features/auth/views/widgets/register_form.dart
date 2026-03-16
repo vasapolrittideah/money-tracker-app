@@ -10,7 +10,6 @@ import 'package:money_tracker/src/core/widgets/feedback/snackbar.dart';
 import 'package:money_tracker/src/core/widgets/inputs/text_input.dart';
 import 'package:money_tracker/src/features/auth/models/register/register.dart';
 import 'package:money_tracker/src/features/auth/viewmodels/auth/auth_notifier.dart';
-import 'package:remixicon/remixicon.dart';
 
 final _formKey = GlobalKey<FormBuilderState>();
 final _emailTextInputKey = 'email';
@@ -82,20 +81,6 @@ class RegisterForm extends HookConsumerWidget {
               passwordFocusNode.unfocus();
             },
           ),
-          if (!passwordHasError.value && _formKey.currentState?.fields[_passwordTextInputKey]?.value == null) ...[
-            SizedBox(height: context.dimensions.dim1_5.h),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(RemixIcons.information_fill, size: context.dimensions.dim3.r, color: context.colors.textSub600),
-                SizedBox(width: context.dimensions.dim1.w),
-                Text(
-                  'ต้องมีอย่างน้อย 6 ตัวอักษรและมีทั้งตัวอักษรและตัวเลข',
-                  style: context.typography.textSmall.copyWith(color: context.colors.textSub600),
-                ),
-              ],
-            ),
-          ],
           SizedBox(height: context.dimensions.dim4.h),
           AppTextInput(
             name: _nameTextInputKey,
