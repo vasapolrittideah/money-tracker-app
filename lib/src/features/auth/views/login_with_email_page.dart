@@ -20,7 +20,7 @@ class LoginWithEmailPage extends StatelessWidget {
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           padding: EdgeInsets.fromLTRB(
             context.dimensions.dim4.w,
-            context.dimensions.dim8.h,
+            context.dimensions.dim6.h,
             context.dimensions.dim4.w,
             0,
           ),
@@ -40,7 +40,7 @@ class LoginWithEmailPage extends StatelessWidget {
                 style: context.typography.textBase.copyWith(color: context.colors.textSub600),
                 textAlign: TextAlign.start,
               ),
-              SizedBox(height: context.dimensions.dim10.h),
+              SizedBox(height: context.dimensions.dim6.h),
               LoginWithEmailForm(),
               SizedBox(height: context.dimensions.dim6.h),
               Row(

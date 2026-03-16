@@ -89,7 +89,7 @@ class VerifyEmailPage extends HookConsumerWidget {
                 keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
                 padding: EdgeInsets.fromLTRB(
                   context.dimensions.dim4.w,
-                  context.dimensions.dim8.h,
+                  context.dimensions.dim6.h,
                   context.dimensions.dim4.w,
                   0,
                 ),
@@ -125,7 +125,7 @@ class VerifyEmailPage extends HookConsumerWidget {
                         Icon(RemixIcons.pencil_line),
                       ],
                     ),
-                    SizedBox(height: context.dimensions.dim10.h),
+                    SizedBox(height: context.dimensions.dim6.h),
                     VerifyEmailForm(),
                     SizedBox(height: context.dimensions.dim6.h),
                     Column(
