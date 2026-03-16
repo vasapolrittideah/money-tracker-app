@@ -1,9 +1,9 @@
 import 'package:money_tracker/src/core/errors/result.dart';
 import 'package:money_tracker/src/core/session/session_notifier.dart';
 import 'package:money_tracker/src/core/state/app_state.dart';
-import 'package:money_tracker/src/features/auth/models/login_with_email/login_with_email.dart';
-import 'package:money_tracker/src/features/auth/models/register/register.dart';
-import 'package:money_tracker/src/features/auth/repositories/auth/auth_repository.dart';
+import 'package:money_tracker/src/features/auth/models/login_with_email.dart';
+import 'package:money_tracker/src/features/auth/models/register.dart';
+import 'package:money_tracker/src/features/auth/repositories/auth_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'auth_notifier.g.dart';

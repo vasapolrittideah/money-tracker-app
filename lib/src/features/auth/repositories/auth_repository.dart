@@ -1,8 +1,8 @@
 import 'package:money_tracker/src/core/bases/base_repository.dart';
 import 'package:money_tracker/src/core/errors/result.dart';
 import 'package:money_tracker/src/core/network/api_client.dart';
-import 'package:money_tracker/src/features/auth/models/login_with_email/login_with_email.dart';
-import 'package:money_tracker/src/features/auth/models/register/register.dart';
+import 'package:money_tracker/src/features/auth/models/login_with_email.dart';
+import 'package:money_tracker/src/features/auth/models/register.dart';
 import 'package:money_tracker/src/core/session/session.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

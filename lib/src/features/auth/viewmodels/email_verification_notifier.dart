@@ -1,7 +1,7 @@
 import 'package:money_tracker/src/core/errors/result.dart';
 import 'package:money_tracker/src/core/state/app_state.dart';
-import 'package:money_tracker/src/features/auth/models/verify_email/verify_email.dart';
-import 'package:money_tracker/src/features/auth/repositories/email_verification/email_verification_repository.dart';
+import 'package:money_tracker/src/features/auth/models/verify_email.dart';
+import 'package:money_tracker/src/features/auth/repositories/email_verification_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'email_verification_notifier.g.dart';

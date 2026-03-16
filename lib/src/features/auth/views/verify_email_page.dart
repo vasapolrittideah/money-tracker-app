@@ -8,8 +8,8 @@ import 'package:money_tracker/src/core/widgets/feedback/alert_dialog.dart';
 import 'package:money_tracker/src/core/widgets/feedback/loading_indicator.dart';
 import 'package:money_tracker/src/core/widgets/layout/header.dart';
 import 'package:money_tracker/src/core/widgets/overlays/dialog.dart';
-import 'package:money_tracker/src/features/account/viewmodels/account/account_notifier.dart';
-import 'package:money_tracker/src/features/auth/viewmodels/email_verification/email_verification_notifier.dart';
+import 'package:money_tracker/src/features/account/viewmodels/account_notifier.dart';
+import 'package:money_tracker/src/features/auth/viewmodels/email_verification_notifier.dart';
 import 'package:money_tracker/src/features/auth/views/widgets/verify_email_form.dart';
 import 'package:remixicon/remixicon.dart';
 

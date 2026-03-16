@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:money_tracker/src/core/session/session_notifier.dart';
 import 'package:money_tracker/src/core/utils/transition_util.dart';
 import 'package:money_tracker/src/core/widgets/navigation/navbar.dart';
-import 'package:money_tracker/src/features/account/viewmodels/account/account_notifier.dart';
+import 'package:money_tracker/src/features/account/viewmodels/account_notifier.dart';
 import 'package:money_tracker/src/features/auth/views/login_with_email_page.dart';
 import 'package:money_tracker/src/features/auth/views/register_page.dart';
 import 'package:money_tracker/src/features/auth/views/select_login_method_page.dart';
