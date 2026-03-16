@@ -1,10 +1,21 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-part 'register.freezed.dart';
+import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'register.g.dart';
 
-@Freezed(toJson: true)
-abstract class Register with _$Register {
-  const factory Register({required String email, required String password}) = _Register;
+@JsonSerializable(createFactory: false)
+class Register extends Equatable {
+  const Register({required this.email, required this.password});
+
+  final String email;
+  final String password;
+
+  Map<String, dynamic> toJson() => _$RegisterToJson(this);
+
+  Register copyWith({String? email, String? password}) {
+    return Register(email: email ?? this.email, password: password ?? this.password);
+  }
+
+  @override
+  List<Object?> get props => [email, password];
 }

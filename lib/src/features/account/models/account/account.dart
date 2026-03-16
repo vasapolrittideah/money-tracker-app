@@ -1,12 +1,22 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-part 'account.freezed.dart';
+import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'account.g.dart';
 
-@Freezed(toJson: false)
-abstract class Account with _$Account {
-  const factory Account({required String id, required String email, required bool verified}) = _Account;
+@JsonSerializable(createToJson: false)
+class Account extends Equatable {
+  const Account({required this.id, required this.email, required this.verified});
+
+  final String id;
+  final String email;
+  final bool verified;
 
   factory Account.fromJson(Map<String, dynamic> json) => _$AccountFromJson(json);
+
+  Account copyWith({String? id, String? email, bool? verified}) {
+    return Account(id: id ?? this.id, email: email ?? this.email, verified: verified ?? this.verified);
+  }
+
+  @override
+  List<Object?> get props => [id, email, verified];
 }
