@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:money_tracker/app.dart';
+import 'package:money_tracker/src/app.dart';
 import 'package:money_tracker/src/core/config/app_config.dart';
 
 /// Tracks errors that have already been reported to avoid duplicate logging.
