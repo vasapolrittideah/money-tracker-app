@@ -40,7 +40,7 @@ class LoginWithEmailForm extends HookConsumerWidget {
       },
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           AppTextInput(
             name: _emailTextInputKey,
@@ -73,7 +73,7 @@ class LoginWithEmailForm extends HookConsumerWidget {
             },
           ),
           if (!passwordHasError.value) SizedBox(height: context.dimensions.dim4.h),
-          AppButton(text: 'ลืมรหัสผ่าน?', variant: ButtonVariant.text, fullWidth: false, onPressed: () {}),
+          AppButton(text: 'ลืมรหัสผ่าน', variant: ButtonVariant.text, fullWidth: false, onPressed: () {}),
           SizedBox(height: context.dimensions.dim4.h),
           AppButton(
             text: 'เข้าสู่ระบบ',

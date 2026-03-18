@@ -14,27 +14,20 @@ class LoginWithEmailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: context.colors.bgWhite0,
-      appBar: AppHeader(showLogo: true),
+      appBar: AppHeader(title: 'เข้าสู่ระบบด้วยอีเมล'),
       body: SafeArea(
         child: SingleChildScrollView(
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           padding: EdgeInsets.fromLTRB(
             context.dimensions.dim4.w,
-            context.dimensions.dim6.h,
+            context.dimensions.dim4.h,
             context.dimensions.dim4.w,
             0,
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'เข้าสู่ระบบด้วยอีเมล',
-                style: context.typography.textDisplay.copyWith(
-                  color: context.colors.textStrong950,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(height: context.dimensions.dim4.h),
               Text(
                 'กรอกอีเมลและรหัสผ่านของคุณเพื่อเข้าสู่ระบบ',
                 style: context.typography.textBase.copyWith(color: context.colors.textSub600),

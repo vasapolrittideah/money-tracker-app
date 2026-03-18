@@ -6,7 +6,9 @@ import 'package:money_tracker/src/core/theme/theme_provider.dart';
 import 'package:pinput/pinput.dart';
 
 class AppDigitInput extends HookWidget {
-  const AppDigitInput({super.key});
+  const AppDigitInput({super.key, this.onCompleted});
+
+  final void Function(String)? onCompleted;
 
   static const _length = 6;
 
@@ -58,7 +60,7 @@ class AppDigitInput extends HookWidget {
           pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
           showCursor: true,
           onTapOutside: (event) => FocusScope.of(context).unfocus(),
-          onCompleted: (pin) => print(pin),
+          onCompleted: onCompleted,
         );
       },
     );

@@ -14,27 +14,20 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: context.colors.bgWhite0,
-      appBar: AppHeader(showLogo: true),
+      appBar: AppHeader(title: 'สมัครสมาชิก'),
       body: SafeArea(
         child: SingleChildScrollView(
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           padding: EdgeInsets.fromLTRB(
             context.dimensions.dim4.w,
-            context.dimensions.dim6.h,
+            context.dimensions.dim4.h,
             context.dimensions.dim4.w,
             0,
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'สมัครสมาชิก',
-                style: context.typography.textDisplay.copyWith(
-                  color: context.colors.textStrong950,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(height: context.dimensions.dim4.h),
               Text(
                 'กรอกข้อมูลของคุณเพื่อสร้างบัญชีใหม่',
                 style: context.typography.textBase.copyWith(color: context.colors.textSub600),

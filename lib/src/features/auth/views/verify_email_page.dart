@@ -22,6 +22,7 @@ class VerifyEmailPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final accountState = ref.watch(accountProvider);
     final countdown = useState(resendCooldown);
+    final emailVerificationState = ref.watch(emailVerificationProvider);
 
     useEffect(() {
       countdown.value = resendCooldown;
@@ -36,7 +37,7 @@ class VerifyEmailPage extends HookConsumerWidget {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         accountState.whenOrNull(
           data: (account) {
-            ref.read(emailVerificationProvider.notifier).sendVerificationEmail();
+            // ref.read(emailVerificationProvider.notifier).sendVerificationEmail();
           },
           error: (error) {
             AppDialog.show(
@@ -79,7 +80,7 @@ class VerifyEmailPage extends HookConsumerWidget {
 
     return Scaffold(
       backgroundColor: context.colors.bgWhite0,
-      appBar: AppHeader(showLogo: true),
+      appBar: AppHeader(title: 'ยืนยันอีเมล'),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -89,29 +90,22 @@ class VerifyEmailPage extends HookConsumerWidget {
                 keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
                 padding: EdgeInsets.fromLTRB(
                   context.dimensions.dim4.w,
-                  context.dimensions.dim6.h,
+                  context.dimensions.dim4.h,
                   context.dimensions.dim4.w,
                   0,
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'ยืนยันอีเมล',
-                      style: context.typography.textDisplay.copyWith(
-                        color: context.colors.textStrong950,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: context.dimensions.dim4.h),
                     Text(
                       'กรอกรหัสยืนยันที่ถูกส่งไปยังอีเมลของคุณ',
                       style: context.typography.textBase.copyWith(color: context.colors.textSub600),
-                      textAlign: TextAlign.center,
+                      textAlign: TextAlign.start,
                     ),
                     SizedBox(height: context.dimensions.dim1.h),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
                           account.email,
@@ -119,14 +113,14 @@ class VerifyEmailPage extends HookConsumerWidget {
                             color: context.colors.textStrong950,
                             fontWeight: FontWeight.w500,
                           ),
-                          textAlign: TextAlign.center,
+                          textAlign: TextAlign.start,
                         ),
                         SizedBox(width: context.dimensions.dim1.w),
                         Icon(RemixIcons.pencil_line),
                       ],
                     ),
                     SizedBox(height: context.dimensions.dim6.h),
-                    VerifyEmailForm(),
+                    VerifyEmailForm(accountId: account.id, loading: emailVerificationState.isLoading),
                     SizedBox(height: context.dimensions.dim6.h),
                     Column(
                       mainAxisSize: MainAxisSize.min,
@@ -151,6 +145,7 @@ class VerifyEmailPage extends HookConsumerWidget {
                                 const Duration(seconds: 1),
                                 (i) => resendCooldown - i - 1,
                               ).take(resendCooldown).listen((v) => countdown.value = v);
+                              ref.read(emailVerificationProvider.notifier).sendVerificationEmail();
                             },
                           ),
                         ),
