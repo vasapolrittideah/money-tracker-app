@@ -37,6 +37,7 @@ class AppAlertDialog extends StatelessWidget {
 
     return Dialog(
       backgroundColor: effectiveBackgroundColor,
+      insetPadding: EdgeInsets.symmetric(horizontal: context.dimensions.dim4.w),
       shape: RoundedRectangleBorder(borderRadius: context.borders.radiusLgAll),
       child: Padding(
         padding: EdgeInsets.all(context.dimensions.dim4.w),
@@ -50,7 +51,7 @@ class AppAlertDialog extends StatelessWidget {
               style: context.typography.text3XLarge.copyWith(color: effectiveTextColor, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: context.dimensions.dim4.h),
+            SizedBox(height: context.dimensions.dim2.h),
             Text(
               message,
               style: context.typography.textBase.copyWith(color: effectiveTextColor),
