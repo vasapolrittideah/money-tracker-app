@@ -1,9 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:json_annotation/json_annotation.dart';
 
-part 'account.g.dart';
-
-@JsonSerializable(createToJson: false)
 class Account extends Equatable {
   const Account({required this.id, required this.email, required this.verified});
 
@@ -11,7 +7,9 @@ class Account extends Equatable {
   final String email;
   final bool verified;
 
-  factory Account.fromJson(Map<String, dynamic> json) => _$AccountFromJson(json);
+  factory Account.fromJson(Map<String, dynamic> json) {
+    return Account(id: json['id'], email: json['email'], verified: json['verified']);
+  }
 
   Account copyWith({String? id, String? email, bool? verified}) {
     return Account(id: id ?? this.id, email: email ?? this.email, verified: verified ?? this.verified);
