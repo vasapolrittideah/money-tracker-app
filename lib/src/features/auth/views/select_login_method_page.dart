@@ -23,15 +23,15 @@ class SelectLoginMethodPage extends StatelessWidget {
                 keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
                 padding: EdgeInsets.fromLTRB(
                   context.dimensions.dim4.w,
-                  context.dimensions.dim14.h,
+                  context.dimensions.dim6.h,
                   context.dimensions.dim4.w,
                   0,
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Assets.images.logo.svg(width: context.dimensions.dim20.w, color: context.colors.primaryBase),
-                    SizedBox(height: context.dimensions.dim8.h),
+                    Assets.images.logo.svg(width: context.dimensions.dim14.w, color: context.colors.primaryBase),
+                    SizedBox(height: context.dimensions.dim6.h),
                     Text(
                       'ยินดีต้อนรับ',
                       style: context.typography.textDisplay.copyWith(

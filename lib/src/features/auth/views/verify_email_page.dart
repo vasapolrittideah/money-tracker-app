@@ -80,7 +80,7 @@ class VerifyEmailPage extends HookConsumerWidget {
 
     return Scaffold(
       backgroundColor: context.colors.bgWhite0,
-      appBar: AppHeader(title: 'ยืนยันอีเมล'),
+      appBar: AppHeader(),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -98,6 +98,14 @@ class VerifyEmailPage extends HookConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Text(
+                      'ยืนยันอีเมล',
+                      style: context.typography.text3XLarge.copyWith(
+                        color: context.colors.textStrong950,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: context.dimensions.dim2.h),
                     Text(
                       'กรอกรหัสยืนยันที่ถูกส่งไปยังอีเมลของคุณ',
                       style: context.typography.textBase.copyWith(color: context.colors.textSub600),

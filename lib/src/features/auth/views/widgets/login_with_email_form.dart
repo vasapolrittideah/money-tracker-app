@@ -40,7 +40,7 @@ class LoginWithEmailForm extends HookConsumerWidget {
       },
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           AppTextInput(
             name: _emailTextInputKey,
