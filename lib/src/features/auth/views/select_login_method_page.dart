@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:money_tracker/src/app_router.dart';
-import 'package:money_tracker/src/core/gen/assets.gen.dart';
 import 'package:money_tracker/src/core/theme/theme_provider.dart';
 import 'package:money_tracker/src/core/widgets/buttons/button.dart';
+import 'package:money_tracker/src/core/widgets/layout/header.dart';
 import 'package:money_tracker/src/features/auth/views/widgets/login_method_button.dart';
 import 'package:remixicon/remixicon.dart';
 
@@ -15,6 +15,7 @@ class SelectLoginMethodPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: context.colors.bgWhite0,
+      appBar: AppHeader(showLogo: true, goBackButton: false),
       body: SafeArea(
         child: Column(
           children: [
@@ -29,22 +30,21 @@ class SelectLoginMethodPage extends StatelessWidget {
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Assets.images.logo.svg(width: context.dimensions.dim14.w, color: context.colors.primaryBase),
-                    SizedBox(height: context.dimensions.dim6.h),
                     Text(
                       'ยินดีต้อนรับ',
-                      style: context.typography.textDisplay.copyWith(
+                      style: context.typography.text3XLarge.copyWith(
                         color: context.colors.textStrong950,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: context.dimensions.dim4.h),
+                    SizedBox(height: context.dimensions.dim2.h),
                     Text(
                       'กรุณาเข้าสู่ระบบเพื่อจัดการการเงินของคุณ',
                       style: context.typography.textBase.copyWith(color: context.colors.textSub600),
                     ),
-                    SizedBox(height: context.dimensions.dim10.h),
+                    SizedBox(height: context.dimensions.dim6.h),
                     LoginMethodButton(platform: SocialPlatform.apple, onPressed: () {}),
                     SizedBox(height: context.dimensions.dim3.h),
                     LoginMethodButton(platform: SocialPlatform.google, onPressed: () {}),

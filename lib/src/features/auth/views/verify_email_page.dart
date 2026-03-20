@@ -80,7 +80,7 @@ class VerifyEmailPage extends HookConsumerWidget {
 
     return Scaffold(
       backgroundColor: context.colors.bgWhite0,
-      appBar: AppHeader(),
+      appBar: AppHeader(showLogo: true),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -90,7 +90,7 @@ class VerifyEmailPage extends HookConsumerWidget {
                 keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
                 padding: EdgeInsets.fromLTRB(
                   context.dimensions.dim4.w,
-                  context.dimensions.dim4.h,
+                  context.dimensions.dim6.h,
                   context.dimensions.dim4.w,
                   0,
                 ),

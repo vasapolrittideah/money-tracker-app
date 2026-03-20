@@ -14,13 +14,13 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: context.colors.bgWhite0,
-      appBar: AppHeader(),
+      appBar: AppHeader(showLogo: true),
       body: SafeArea(
         child: SingleChildScrollView(
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           padding: EdgeInsets.fromLTRB(
             context.dimensions.dim4.w,
-            context.dimensions.dim4.h,
+            context.dimensions.dim6.h,
             context.dimensions.dim4.w,
             0,
           ),
